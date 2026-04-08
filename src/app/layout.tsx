@@ -36,10 +36,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="sr">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
+      {/* Next.js automatically injects the <head> element. */}
       <body>
         <Navbar />
         <main style={{ position: 'relative', zIndex: 1 }}>

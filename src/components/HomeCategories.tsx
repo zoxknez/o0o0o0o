@@ -16,54 +16,15 @@ const XIcon = ({ size = 24 }: { size?: number }) => (
 );
 
 const categoryConfig = [
-  {
-    slug: 'tutorijali',
-    emoji: '📚',
-    span: 'col-1',
-    tagline: 'Uči. Primeni. Napreduj.',
-  },
-  {
-    slug: 'vesti',
-    emoji: '📡',
-    span: 'col-1',
-    tagline: 'Budi u toku',
-  },
-  {
-    slug: 'programi',
-    emoji: '⚙️',
-    span: 'col-1',
-    tagline: 'Alati koji rade za Vas',
-  },
-  {
-    slug: 'operativni-sistemi',
-    emoji: '🖥️',
-    span: 'col-1',
-    tagline: 'Vaš OS, vaša pravila',
-  },
-  {
-    slug: 'igre',
-    emoji: '🎮',
-    span: 'col-1',
-    tagline: 'Igraj. Istraži. Uživaj.',
-  },
-  {
-    slug: 'casopisi',
-    emoji: '📖',
-    span: 'col-1',
-    tagline: 'Čitaj znanje',
-  },
-  {
-    slug: 'saveti',
-    emoji: '💡',
-    span: 'col-1',
-    tagline: 'Sitni trikovi, veliki rezultati',
-  },
-  {
-    slug: 'zajednica',
-    emoji: '👥',
-    span: 'col-1',
-    tagline: 'Zajedno rastemo',
-  },
+  { slug: 'tutorijali', emoji: '📚', span: 'col-2', tagline: 'Uči. Primeni. Napreduj.' },
+  { slug: 'vesti', emoji: '📡', span: 'col-1', tagline: 'Budi u toku' },
+  { slug: 'android', emoji: '🤖', span: 'col-1', tagline: 'APK i Android' },
+  { slug: 'programi', emoji: '⚙️', span: 'col-2', tagline: 'Alati koji rade za Vas' },
+  { slug: 'operativni-sistemi', emoji: '🖥️', span: 'col-1', tagline: 'Vaš OS, vaša pravila' },
+  { slug: 'igre', emoji: '🎮', span: 'col-1', tagline: 'Igraj. Istraži. Uživaj.' },
+  { slug: 'casopisi', emoji: '📖', span: 'col-2', tagline: 'Znanje pred vama' },
+  { slug: 'saveti', emoji: '💡', span: 'col-1', tagline: 'Sitni trikovi' },
+  { slug: 'zajednica', emoji: '👥', span: 'col-1', tagline: 'Zajedno rastemo' },
 ];
 
 export default function HomeCategories() {
@@ -164,11 +125,10 @@ export default function HomeCategories() {
 
       <style>{`
         .home-wrap {
-          min-height: 100vh;
           display: flex;
           flex-direction: column;
           position: relative;
-          padding-bottom: 80px;
+          padding-bottom: 40px;
         }
 
         .orb {
@@ -298,6 +258,12 @@ export default function HomeCategories() {
           border-radius: 0 0 4px 4px;
         }
 
+        .bento-card.col-2 .bento-line {
+          left: 50%;
+          transform: translateX(-50%);
+          width: 60px;
+        }
+
         .bento-content {
           display: flex;
           flex-direction: column;
@@ -306,11 +272,23 @@ export default function HomeCategories() {
           position: relative;
           z-index: 1;
         }
+        
+        /* Centered style for wide cards */
+        .bento-card.col-2 .bento-content {
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        }
 
         .bento-top {
           display: flex;
           align-items: flex-start;
           justify-content: space-between;
+          width: 100%;
+        }
+
+        .bento-card.col-2 .bento-top {
+          justify-content: center;
         }
 
         .bento-emoji {
@@ -327,6 +305,12 @@ export default function HomeCategories() {
           border: 1px solid color-mix(in srgb, var(--c) 25%, transparent);
           padding: 4px 9px;
           border-radius: 100px;
+        }
+
+        .bento-card.col-2 .bento-count {
+          position: absolute;
+          top: 0;
+          right: 0;
         }
 
         .bento-name {
@@ -361,7 +345,7 @@ export default function HomeCategories() {
         /* ─── Social Hub Styles ─── */
         .social-hub {
           margin-top: clamp(48px, 8vw, 80px);
-          margin-bottom: 40px;
+          margin-bottom: 0;
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 24px;
@@ -438,7 +422,7 @@ export default function HomeCategories() {
             padding-bottom: 56px;
           }
           .home-hero {
-            padding-top: 24px;
+            padding-top: 100px;
             padding-bottom: 12px;
           }
           .bento-grid {

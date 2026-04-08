@@ -17,6 +17,7 @@ export interface Post {
 export const categories = [
   { slug: 'tutorijali', name: 'Tutorijali', description: 'Vodiči i tutorijali za sve nivoe', color: '#00d4ff' },
   { slug: 'programi', name: 'Programi', description: 'Softver, alati i aplikacije', color: '#7c3aed' },
+  { slug: 'android', name: 'Android', description: 'APK igre i aplikacije', color: '#10b981' },
   { slug: 'operativni-sistemi', name: 'Operativni sistemi', description: 'Windows, Linux, macOS i više', color: '#059669' },
   { slug: 'casopisi', name: 'Časopisi i e-knjige', description: 'Digitalne publikacije i e-knjige', color: '#d97706' },
   { slug: 'igre', name: 'Igre i zabava', description: 'Gaming, emulatori i zabava', color: '#dc2626' },

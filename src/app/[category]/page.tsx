@@ -5,9 +5,10 @@ import {
   getPostsByCategory, getCategoryInfo, categories,
 } from '@/lib/posts';
 import PostCard from '@/components/PostCard';
+import PaginatedPostGrid from '@/components/PaginatedPostGrid';
 import {
   BookOpen, AppWindow, Monitor, Library,
-  Gamepad2, Newspaper, Lightbulb, Users, ChevronRight,
+  Gamepad2, Newspaper, Lightbulb, Users, ChevronRight, Smartphone
 } from 'lucide-react';
 
 // Valid category slugs
@@ -22,6 +23,7 @@ const iconMap: Record<string, React.ReactNode> = {
   'vesti':              <Newspaper size={32} />,
   'saveti':             <Lightbulb size={32} />,
   'zajednica':          <Users size={32} />,
+  'android':            <Smartphone size={32} />,
 };
 
 type Params = { category: string };
@@ -119,13 +121,7 @@ export default async function CategoryPage(
               </Link>
             </div>
           ) : (
-            <div className="posts-grid category-posts-grid">
-              {posts.map((post, i) => (
-                <div key={post.id} className="reveal" style={{ animationDelay: `${0.5 + i * 0.1}s` }}>
-                  <PostCard post={post} />
-                </div>
-              ))}
-            </div>
+            <PaginatedPostGrid posts={posts} itemsPerPage={9} />
           )}
         </div>
       </section>

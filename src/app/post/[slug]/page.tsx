@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { getPostBySlug, getCategoryInfo, getAllPosts } from '@/lib/posts';
 import { Clock, Calendar, ChevronRight, ArrowLeft } from 'lucide-react';
 import ReadingProgress from '@/components/ReadingProgress';
+import ReactMarkdown from 'react-markdown';
 
 type Params = { slug: string };
 
@@ -155,9 +156,44 @@ export default async function PostPage(
 
           {/* Main content */}
           <div className="post-content reveal animate-in stagger-5" style={{ position: 'relative', zIndex: 1 }} aria-label="Sadržaj objave">
-            <p className="reveal-on-scroll">{post.content}</p>
+            <div className="reveal-on-scroll markdown-body">
+              <ReactMarkdown
+                components={{
+                  a(props) {
+                    const { node, href, children, ...rest } = props;
+                    const isExternal = href?.startsWith('http');
+                    return (
+                      <a 
+                        href={href} 
+                        {...rest} 
+                        target={isExternal ? "_blank" : undefined} 
+                        rel={isExternal ? "noopener noreferrer" : undefined}
+                        title={isExternal ? "Otvara se u novom prozoru" : undefined}
+                      >
+                        {children}
+                        {isExternal && (
+                          <span 
+                            style={{ 
+                              opacity: 0.5, 
+                              fontSize: '0.8em', 
+                              marginLeft: '6px', 
+                              wordBreak: 'break-all',
+                              fontFamily: 'var(--font-mono)'
+                            }}
+                          >
+                            ({href})
+                          </span>
+                        )}
+                      </a>
+                    );
+                  }
+                }}
+              >
+                {post.content}
+              </ReactMarkdown>
+            </div>
             
-            <div className="glass-prism post-insight" style={{ background: cat ? `${cat.color}05` : 'rgba(255,255,255,0.02)' }}>
+            <div className="glass-prism post-insight" style={{ background: cat ? `${cat.color}05` : 'rgba(255,255,255,0.02)', marginTop: 60 }}>
               <div 
                 className="post-insight-label"
                 style={{ 
