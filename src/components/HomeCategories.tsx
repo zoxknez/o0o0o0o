@@ -75,12 +75,7 @@ export default function HomeCategories() {
       <div className="orb orb-3" aria-hidden="true" />
 
       {/* ── Prism Hero ── */}
-      <header className="home-header reveal" style={{ 
-        position: 'relative', 
-        overflow: 'hidden',
-        padding: '120px 0 60px',
-        textAlign: 'center'
-      }}>
+      <header className="home-header home-hero reveal">
         {/* Dynamic Mesh Background */}
         <div className="liquid-bg" style={{ 
           background: `radial-gradient(circle at 50% 50%, var(--accent-cyan)15 0%, transparent 60%),
@@ -88,7 +83,7 @@ export default function HomeCategories() {
           opacity: 0.4
         }} aria-hidden="true" />
 
-        <div className="home-header-inner" style={{ position: 'relative', zIndex: 10 }}>
+        <div className="home-header-inner">
         </div>
       </header>
 
@@ -137,14 +132,7 @@ export default function HomeCategories() {
       </main>
 
       {/* ── Social Hub ── */}
-      <section className="social-hub container reveal" style={{ 
-        marginTop: '80px', 
-        marginBottom: '40px',
-        display: 'flex', 
-        justifyContent: 'center', 
-        gap: '32px',
-        padding: '0 24px'
-      }}>
+      <section className="social-hub container reveal">
         <a 
           href="https://github.com/zoxknez" 
           target="_blank" 
@@ -216,13 +204,19 @@ export default function HomeCategories() {
 
         .home-header {
           text-align: center;
-          padding: 80px 24px 40px;
           position: relative;
           z-index: 1;
+        }
+        .home-hero {
+          overflow: hidden;
+          padding: clamp(24px, 6vw, 72px) 0 clamp(20px, 4vw, 40px);
         }
         .home-header-inner {
           max-width: 600px;
           margin: 0 auto;
+          position: relative;
+          z-index: 10;
+          min-height: 8px;
         }
 
         .bento-grid {
@@ -231,6 +225,7 @@ export default function HomeCategories() {
           gap: 16px;
           position: relative;
           z-index: 1;
+          align-items: stretch;
         }
 
         .col-1 { grid-column: span 1; }
@@ -252,6 +247,12 @@ export default function HomeCategories() {
                       border-color 0.25s ease,
                       box-shadow 0.3s ease;
           animation: bentoPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        }
+
+        .bento-card:focus-visible,
+        .social-card:focus-visible {
+          outline: 2px solid var(--c, var(--accent-cyan));
+          outline-offset: 3px;
         }
 
         @keyframes bentoPop {
@@ -358,19 +359,32 @@ export default function HomeCategories() {
         }
 
         /* ─── Social Hub Styles ─── */
+        .social-hub {
+          margin-top: clamp(48px, 8vw, 80px);
+          margin-bottom: 40px;
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 24px;
+          padding: 0 24px;
+          position: relative;
+          z-index: 1;
+        }
+
         .social-card {
           display: flex;
           align-items: center;
           gap: 24px;
-          padding: 32px 50px;
+          padding: 28px 32px;
           background: var(--bg-card);
           border: 1px solid var(--border);
           border-radius: 30px;
           text-decoration: none;
           color: var(--text-primary);
           transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-          min-width: 320px;
+          min-width: 0;
+          width: 100%;
           backdrop-filter: blur(20px);
+          justify-content: center;
         }
 
         .social-card:hover {
@@ -402,26 +416,102 @@ export default function HomeCategories() {
         }
 
         @media (max-width: 900px) {
-          .bento-grid { grid-template-columns: repeat(2, 1fr); }
+          .bento-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+          .social-hub { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
+          .orb {
+            filter: blur(90px);
+            opacity: 0.75;
+          }
+          .orb-1,
+          .orb-2 {
+            width: 360px;
+            height: 360px;
+          }
+          .orb-3 {
+            width: 220px;
+            height: 220px;
+          }
+          .home-wrap {
+            padding-bottom: 56px;
+          }
+          .home-hero {
+            padding-top: 24px;
+            padding-bottom: 12px;
+          }
+          .bento-grid {
+            gap: 14px;
+          }
+          .bento-card {
+            min-height: 172px;
+            padding: 22px;
+            border-radius: 18px;
+          }
+          .bento-name {
+            font-size: 1.1rem;
+          }
+          .bento-tagline {
+            font-size: 0.72rem;
+            line-height: 1.5;
+          }
+          .bento-arrow {
+            opacity: 1;
+            transform: translateX(0);
+          }
           .social-hub {
-            flex-direction: column;
-            align-items: stretch;
             gap: 16px;
+            padding: 0 16px;
           }
           .social-card {
-            min-width: auto;
             padding: 24px;
-            justify-content: center;
+            justify-content: flex-start;
+            gap: 18px;
+            border-radius: 24px;
+          }
+          .social-card-label {
+            font-size: 1.1rem;
+          }
+          .social-card-sub {
+            font-size: 0.8rem;
           }
         }
 
         @media (max-width: 580px) {
-          .bento-grid { grid-template-columns: 1fr; }
-          .bento-card { min-height: 160px; }
-          .home-header { padding: 48px 24px 20px; }
+          .bento-grid {
+            grid-template-columns: 1fr;
+            gap: 12px;
+          }
+          .bento-card {
+            min-height: 148px;
+            padding: 20px;
+          }
+          .bento-top {
+            align-items: center;
+          }
+          .bento-emoji {
+            font-size: 2.2rem;
+          }
+          .bento-line {
+            left: 20px;
+          }
+          .home-header {
+            padding-inline: 16px;
+          }
+          .social-card {
+            align-items: flex-start;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .orb,
+          .bento-card,
+          .social-card,
+          .bento-glow {
+            animation: none !important;
+            transition: none !important;
+          }
         }
       `}</style>
     </div>
