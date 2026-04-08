@@ -15,6 +15,7 @@ const categoryEmojis: Record<string, string> = {
   'vesti': '📡',
   'saveti': '💡',
   'zajednica': '👥',
+  'android': '📱',
 };
 
 export default function PostCard({ post }: PostCardProps) {
