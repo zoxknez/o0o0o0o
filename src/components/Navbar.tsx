@@ -51,34 +51,21 @@ export default function Navbar() {
   }, [isMenuOpen]);
 
   // Avoid hydration mismatch by rendering a stable structure
-  const headerClasses = [
-    'navbar',
-    'glass',
-    'reveal',
-    !isVisible ? 'navbar-hidden' : '',
-    isMenuOpen ? 'menu-open' : ''
-  ].filter(Boolean).join(' ');
+  const headerClasses = mounted 
+    ? [
+        'navbar',
+        'glass',
+        'reveal',
+        !isVisible ? 'navbar-hidden' : '',
+        isMenuOpen ? 'menu-open' : ''
+      ].filter(Boolean).join(' ')
+    : 'navbar glass';
 
   const mobileMenuClasses = [
     'mobile-menu',
     'glass',
     isMenuOpen ? 'open' : ''
   ].filter(Boolean).join(' ');
-
-  if (!mounted) {
-    return (
-      <header className="navbar glass">
-        <div className="container">
-          <nav className="navbar-inner">
-            <div className="navbar-brand">
-              <span className="navbar-logo">o0o0o0o</span>
-              <span className="navbar-subtitle">IT BLOG</span>
-            </div>
-          </nav>
-        </div>
-      </header>
-    );
-  }
 
   return (
     <>
