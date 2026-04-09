@@ -26,26 +26,105 @@ export const categories = [
   { slug: 'zajednica', name: 'Zajednica', description: 'Forum, diskusije i zajednica', color: '#9333ea' },
 ];
 
+const allPosts = postsData as Post[];
+
+function normalizeSearchValue(value: string): string {
+  return value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+}
+
+function getSearchScore(post: Post, normalizedQuery: string): number {
+  const categoryInfo = getCategoryInfo(post.category);
+  const normalizedTitle = normalizeSearchValue(post.title);
+  const normalizedExcerpt = normalizeSearchValue(post.excerpt);
+  const normalizedContent = normalizeSearchValue(post.content);
+  const normalizedAuthor = normalizeSearchValue(post.author);
+  const normalizedSlug = normalizeSearchValue(post.slug);
+  const normalizedCategory = normalizeSearchValue(
+    `${post.category} ${categoryInfo?.name ?? ''} ${categoryInfo?.description ?? ''}`
+  );
+  const normalizedTags = post.tags.map(normalizeSearchValue);
+
+  let score = 0;
+
+  if (normalizedTitle.startsWith(normalizedQuery)) {
+    score += 12;
+  } else if (normalizedTitle.includes(normalizedQuery)) {
+    score += 8;
+  }
+
+  if (normalizedSlug.includes(normalizedQuery)) {
+    score += 6;
+  }
+
+  if (normalizedTags.some((tag) => tag.includes(normalizedQuery))) {
+    score += 6;
+  }
+
+  if (normalizedExcerpt.includes(normalizedQuery)) {
+    score += 4;
+  }
+
+  if (normalizedCategory.includes(normalizedQuery)) {
+    score += 3;
+  }
+
+  if (normalizedAuthor.includes(normalizedQuery)) {
+    score += 2;
+  }
+
+  if (normalizedContent.includes(normalizedQuery)) {
+    score += 1;
+  }
+
+  return score;
+}
+
 export function getAllPosts(): Post[] {
-  return postsData as Post[];
+  return allPosts;
 }
 
 export function getFeaturedPosts(): Post[] {
-  return (postsData as Post[]).filter(p => p.featured).slice(0, 4);
+  return allPosts.filter(p => p.featured).slice(0, 4);
 }
 
 export function getLatestPosts(count = 8): Post[] {
-  return [...(postsData as Post[])]
+  return [...allPosts]
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, count);
 }
 
 export function getPostsByCategory(category: string): Post[] {
-  return (postsData as Post[]).filter(p => p.category === category);
+  return allPosts.filter(p => p.category === category);
 }
 
 export function getPostBySlug(slug: string): Post | undefined {
-  return (postsData as Post[]).find(p => p.slug === slug);
+  return allPosts.find(p => p.slug === slug);
+}
+
+export function searchPosts(query: string): Post[] {
+  const normalizedQuery = normalizeSearchValue(query).trim();
+
+  if (!normalizedQuery) {
+    return [];
+  }
+
+  return [...allPosts]
+    .map((post) => ({
+      post,
+      score: getSearchScore(post, normalizedQuery),
+    }))
+    .filter((item) => item.score > 0)
+    .sort((a, b) => {
+      if (b.score !== a.score) {
+        return b.score - a.score;
+      }
+
+      return new Date(b.post.date).getTime() - new Date(a.post.date).getTime();
+    })
+    .map((item) => item.post);
 }
 
 export function getCategoryInfo(slug: string) {

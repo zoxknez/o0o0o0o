@@ -4,7 +4,6 @@ import Link from 'next/link';
 import {
   getPostsByCategory, getCategoryInfo, categories,
 } from '@/lib/posts';
-import PostCard from '@/components/PostCard';
 import PaginatedPostGrid from '@/components/PaginatedPostGrid';
 import {
   BookOpen, AppWindow, Monitor, Library,

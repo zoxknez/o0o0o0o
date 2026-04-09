@@ -1,44 +1,68 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Search, Menu, X } from 'lucide-react';
 import { categories } from '@/lib/posts';
 
+const MOBILE_MEDIA_QUERY = '(max-width: 1100px)';
+
+type MenuState = {
+  open: boolean;
+  pathname: string;
+};
+
+function subscribeToMobileViewport(callback: () => void) {
+  if (typeof window === 'undefined') {
+    return () => undefined;
+  }
+
+  const mediaQuery = window.matchMedia(MOBILE_MEDIA_QUERY);
+  const listener = () => callback();
+
+  mediaQuery.addEventListener('change', listener);
+  return () => mediaQuery.removeEventListener('change', listener);
+}
+
+function getMobileViewportSnapshot() {
+  if (typeof window === 'undefined') {
+    return false;
+  }
+
+  return window.matchMedia(MOBILE_MEDIA_QUERY).matches;
+}
+
 export default function Navbar() {
   const pathname = usePathname();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isMobileViewport = useSyncExternalStore(
+    subscribeToMobileViewport,
+    getMobileViewportSnapshot,
+    () => false
+  );
+  const [menuState, setMenuState] = useState<MenuState>({ open: false, pathname: '' });
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const lastScrollYRef = useRef(0);
+  const isVisibleRef = useRef(true);
+  const isMenuOpen = isMobileViewport && menuState.open && menuState.pathname === pathname;
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
-      // Hide on scroll down, show on scroll up
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
+
+      const nextVisible = !(currentScrollY > lastScrollYRef.current && currentScrollY > 100);
+      lastScrollYRef.current = currentScrollY;
+
+      if (nextVisible !== isVisibleRef.current) {
+        isVisibleRef.current = nextVisible;
+        setIsVisible(nextVisible);
       }
-      
-      setLastScrollY(currentScrollY);
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
-
-  // Close menu when pathname changes
-  useEffect(() => {
-    setIsMenuOpen(false);
-  }, [pathname]);
+  }, []);
 
   // Enable/disable scroll on body when menu is open
   useEffect(() => {
@@ -50,16 +74,33 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [isMenuOpen]);
 
-  // Avoid hydration mismatch by rendering a stable structure
-  const headerClasses = mounted 
-    ? [
-        'navbar',
-        'glass',
-        'reveal',
-        !isVisible ? 'navbar-hidden' : '',
-        isMenuOpen ? 'menu-open' : ''
-      ].filter(Boolean).join(' ')
-    : 'navbar glass';
+  const toggleMenu = () => {
+    if (!isMobileViewport) {
+      return;
+    }
+
+    setMenuState((current) => {
+      const isCurrentlyOpen =
+        isMobileViewport && current.open && current.pathname === pathname;
+
+      return {
+        open: !isCurrentlyOpen,
+        pathname,
+      };
+    });
+  };
+
+  const closeMenu = () => {
+    setMenuState({ open: false, pathname });
+  };
+
+  const headerClasses = [
+    'navbar',
+    'glass',
+    'reveal',
+    !isVisible && !isMenuOpen ? 'navbar-hidden' : '',
+    isMenuOpen ? 'menu-open' : ''
+  ].filter(Boolean).join(' ');
 
   const mobileMenuClasses = [
     'mobile-menu',
@@ -95,21 +136,29 @@ export default function Navbar() {
           </ul>
 
           <div className="navbar-actions">
-            <div className="navbar-search glass desktop-only" role="search">
-              <Search className="search-icon" size={14} aria-hidden="true" />
+            <form className="navbar-search glass desktop-only" role="search" action="/pretraga">
+              <button type="submit" className="search-submit" aria-label="Pokrenite pretragu">
+                <Search className="search-icon" size={14} aria-hidden="true" />
+              </button>
               <input
+                name="q"
                 type="search"
                 placeholder="Pretražite..."
                 aria-label="Pretražite blog"
                 id="search-input"
+                enterKeyHint="search"
+                minLength={2}
+                required
               />
-            </div>
+            </form>
             
-            <button 
+            <button
               className={`mobile-toggle ${isMenuOpen ? 'active' : ''}`}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              type="button"
+              onClick={toggleMenu}
               aria-expanded={isMenuOpen}
-              aria-label="Toggle menu"
+              aria-controls="mobile-menu"
+              aria-label={isMenuOpen ? 'Zatvori meni' : 'Otvori meni'}
             >
               {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
@@ -120,17 +169,24 @@ export default function Navbar() {
       </header>
 
       {/* Mobile Menu Overlay */}
-      <div className={mobileMenuClasses}>
+      <div className={mobileMenuClasses} id="mobile-menu" aria-hidden={!isMenuOpen}>
         <div className="mobile-menu-inner">
           <div className="mobile-search-container">
-            <div className="navbar-search glass" role="search">
-              <Search className="search-icon" size={16} aria-hidden="true" />
+            <form className="navbar-search glass" role="search" action="/pretraga" onSubmit={closeMenu}>
+              <button type="submit" className="search-submit" aria-label="Pokrenite pretragu">
+                <Search className="search-icon" size={16} aria-hidden="true" />
+              </button>
               <input
+                name="q"
                 type="search"
                 placeholder="Pretražite blog..."
                 aria-label="Pretražite blog"
+                id="mobile-search-input"
+                enterKeyHint="search"
+                minLength={2}
+                required
               />
-            </div>
+            </form>
           </div>
           <ul className="mobile-nav">
             {categories.map((cat, i) => (
@@ -138,7 +194,7 @@ export default function Navbar() {
                 <Link
                   href={`/${cat.slug}`}
                   className={pathname === `/${cat.slug}` ? 'active' : ''}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={closeMenu}
                 >
                   <span className="cat-info">
                     <span className="cat-name">{cat.name}</span>
@@ -157,4 +213,3 @@ export default function Navbar() {
     </>
   );
 }
-

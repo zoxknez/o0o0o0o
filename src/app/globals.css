@@ -285,6 +285,28 @@ body::before {
   width: 100%;
 }
 
+.search-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  flex: none;
+  transition: color var(--transition), transform var(--transition);
+}
+
+.search-submit:hover,
+.navbar-search:focus-within .search-submit {
+  color: var(--accent-cyan);
+}
+
+.search-submit:active {
+  transform: scale(0.94);
+}
+
 .mobile-toggle {
   display: none;
   background: none;
@@ -435,6 +457,12 @@ body::before {
     display: block; 
     position: absolute;
     right: 0;
+  }
+}
+
+@media (min-width: 1101px) {
+  .mobile-menu {
+    display: none;
   }
 }
 
