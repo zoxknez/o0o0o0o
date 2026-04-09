@@ -1,5 +1,103 @@
 [
   {
+    "id": "27",
+    "slug": "ovladajte-ai-istrazivanjem-u-2026-godini",
+    "title": "Ovladajte AI istraživanjem u 2026. godini",
+    "excerpt": "Kako kombinovati Perplexity za pretragu u realnom vremenu i Claude za duboku analizu podataka.",
+    "content": "U 2026. godini, puko postavljanje pitanja ChatGPT-u više nije dovoljno za ozbiljan rad. Pravi profesionalci koriste strategiju zvanu **'AI Research Stacking'**.\n\n### 1️⃣ PRVI KORAK: Perplexity za 'Live' podatke\nPerplexity AI ostaje neprikosnoven u pretrazi interneta u realnom vremenu. \n- **Savet:** Koristite 'Pro' mod i uključite 'Deep Research' opciju.\n- **Rezultat:** Dobićete listu proverenih činjenica sa direktnim linkovima ka izvorima, izbegavajući AI halucinacije.\n\n### 2️⃣ DRUGI KORAK: Claude za sintezu i stil\nKada prikupite činjenice, prebacite ih u Claude (ili najnoviji GPT model). Claude je poznat po tome što piše na način koji je najmanje 'robotski' i najbolje prati kompleksne instrukcije.\n- **Prompt primer:** 'Na osnovu ovih podataka iz Perplexity-ja, napiši analitički izveštaj za [X] ciljnu grupu, koristeći [Y] ton glasa.'\n\n### 3️⃣ TREEĆI KORAK: Provera činjenica (Fact-Checking)\nUvek tražite od AI-ja da citira izvore direktno u tekstu. U 2026. godini, transparentnost izvora je jedini način da se zadrži autoritet u moru generisanog sadržaja.\n\n🚀 **2026 PRO-TIP: AI Research Agents**\nPočnite da koristite specijalizovane agente poput **Coda AI** ili **Notion AI** koji mogu da nadgledaju stotine RSS feed-ova i automatski pripremaju jutarnji brifing zasnovan na vašim specifičnim interesovanjima.",
+    "category": "saveti",
+    "author": "Uredništvo",
+    "date": "2026-04-09",
+    "readTime": "6 min",
+    "featured": true,
+    "tags": [
+      "ai",
+      "research",
+      "perplexity",
+      "claude",
+      "productivity",
+      "saveti"
+    ]
+  },
+  {
+    "id": "26",
+    "slug": "zbogom-kucanju-glasovna-revolucija-2026",
+    "title": "Zbogom kucanju: Glasovna revolucija 2026.",
+    "excerpt": "Korišćenje Wispr Flow i Fireflies za automatsko pisanje dokumentacije i vođenje beleški sa sastanaka.",
+    "content": "Kucanje na tastaturi polako postaje stvar prošlosti. Sa napretkom modela kao što je GPT-4o i novih AI procesora, glasovni unos je postao brži i precizniji od bilo kog daktilografa.\n\n### ⌨️ Wispr Flow: Vaš glas direktno u tekst\nWispr Flow nije samo 'dictation' alat. On razume kontekst.\n- **Automatsko formatiranje:** Možete reći 'napravi listu' ili 'podebljaj ovo', i on će to uraditi.\n- **Više jezika:** Savršeno prepoznaje srpski, engleski i tehničku terminologiju istovremeno.\n- **Brzina:** Diktata je 3x brži od najbržeg kucanja.\n\n### 🎙️ Fireflies.ai: Kraj manualnim zapisnicima\nZaboravite na hvatanje beleški tokom Zoom ili Teams sastanaka.\n- **Rezimei:** AI izvlači ključne odluke, zadatke (Action Items) i rokove.\n- **Pretraga:** Možete pretraživati sastanak po ključnim rečima kao što pretražujete Google.\n- **Sentiment analiza:** Vidi ko je bio najaktivniji i kakva je bila atmosfera na pozivu.\n\n🚀 **2026 PRO-TIP: Wearable AI**\nU 2026. godini, uređaji poput **Rabbit R1** ili **AI Pin** postali su mainstream u poslovnom svetu. Omogućavaju vam da šaljete mejlove i upravljate kalendarom 'on the go' bez vađenja telefona, koristeći isključivo glasovne komande povezane sa vašim glavnim AI agentom.",
+    "category": "saveti",
+    "author": "Uredništvo",
+    "date": "2026-04-09",
+    "readTime": "5 min",
+    "featured": false,
+    "tags": [
+      "voice",
+      "productivity",
+      "ai",
+      "wispr",
+      "fireflies",
+      "saveti"
+    ]
+  },
+  {
+    "id": "25",
+    "slug": "digitalni-suverenitet-self-hosting-za-pocetnike",
+    "title": "Digitalni suverenitet: Self-hosting za početnike",
+    "excerpt": "Vodič za Coolify i Immich - kako preuzeti kontrolu nad svojim podacima i izbeći cloud pretplate.",
+    "content": "Previše se oslanjamo na Google, Apple i Microsoft. Cloud pretplate postaju sve skuplje. Rešenje? **Self-hosting**.\n\n### 🚀 Coolify: Vaš privatni Vercel\nAko ste ikada želeli da hostujete svoj sajt ili bazu podataka bez komplikovanih terminal komandi, Coolify je rešenje.\n- **Open Source:** Potpuno besplatan ako ga instalirate na svoj server.\n- **One-click Deploys:** Instalirajte WordPress, Ghost, baze podataka ili bilo koji Docker kontejner jednim klikom.\n- **Puna kontrola:** Podaci ostaju na vašem hardveru (ili VPS-u).\n\n### 📸 Immich: Najbolja alternativa za Google Photos\nGoogle Photos je počeo da naplaćuje čak i za mali broj slika. Immich je moderni, brzi self-hosted foto server.\n- **AI Tagging:** Automatski prepoznaje lica i objekte na slikama (lokalno!).\n- **Live Photos:** Podržava iPhone i Android live fotografije.\n- **Sigurnost:** Vaše privatne slike nikada ne napuštaju vašu mrežu.\n\n### 🛠️ Kako početi?\n1. Kupite polovan mini-PC (npr. Lenovo ThinkCentre ili Intel NUC).\n2. Instalirajte lagan Linux (Ubuntu Server ili Debian).\n3. Pokrenite jednu komandu za instalaciju Coolify-a.\n4. Počnite da gradite svoj digitalni dvorac.\n\n🚀 **2026 PRO-TIP: Solar-Powered Hosting**\nSa energetskom nesigurnošću u 2026. godini, 'Off-grid Homelab' je postao hit. Mali serveri poput **Raspberry Pi 5** napajani solarnim panelom omogućavaju da vaš personalni cloud (Nextcloud, Immich) radi čak i tokom restrikcija.",
+    "category": "tutorijali",
+    "author": "Uredništvo",
+    "date": "2026-04-09",
+    "readTime": "8 min",
+    "featured": true,
+    "tags": [
+      "self-hosting",
+      "coolify",
+      "immich",
+      "privatnost",
+      "tutorijal"
+    ]
+  },
+  {
+    "id": "24",
+    "slug": "vas-privatni-ai-pokretanje-lokalnih-llm-modela",
+    "title": "Vaš privatni AI: Pokretanje lokalnih LLM modela",
+    "excerpt": "Tutorijal za Ollama i Open WebUI za pokretanje moćnih AI modela na sopstvenom hardveru.",
+    "content": "Želite moć ChatGPT-a ali bez slanja svojih dokumenata u cloud? U 2026. godini to je moguće čak i na laptopu srednje klase.\n\n### 🦙 Ollama: Motor za lokalni AI\nOllama je najjednostavniji način da pokrenete Llama 3, Mistral ili Gemma modele lokalno.\n- **Instalacija:** Radi na Windows, Mac i Linux.\n- **Biblioteka modela:** Možete 'povući' stotine različitih modela prilagođenih za kodiranje, kreativno pisanje ili baze znanja.\n- **Brzina:** Koristi snagu vaše grafičke kartice (GPU) za trenutne odgovore.\n\n### 🌐 Open WebUI: Interfejs koji volite\nDa ne biste kucali u terminalu, koristite Open WebUI.\n- **Izgled:** Skoro identičan ChatGPT interfejsu.\n- **RAG (Retrieval-Augmented Generation):** Ubacite PDF ili folder sa dokumentima i pitajte AI pitanja o njima lokalno.\n- **Višekorisnički mod:** Podelite pristup svom lokalnom AI-ju sa porodicom ili kolegama u mreži.\n\n### 💻 Šta vam je potrebno od hardvera?\nU 2026. godini, **M3 Pro Mac** ili PC sa **NVIDIA RTX 4060** grafikom su sasvim dovoljni da pokrenu moćne 7B i 14B parametarske modele brže nego što čitate.\n\n🚀 **2026 PRO-TIP: LoRA Fine-Tuning**\nNaučite osnove LoRA (Low-Rank Adaptation) kako biste istrenirali lokalni model na sopstvenom stilu pisanja ili specifičnoj poslovnoj dokumentaciji bez potrebe za ogromnim resursima.",
+    "category": "tutorijali",
+    "author": "Uredništvo",
+    "date": "2026-04-09",
+    "readTime": "7 min",
+    "featured": false,
+    "tags": [
+      "ai",
+      "ollama",
+      "llm",
+      "tutorijal",
+      "localai"
+    ]
+  },
+  {
+    "id": "23",
+    "slug": "utvrdjivanje-digitalnog-zivota-dalje-od-lozinki",
+    "title": "Utvrđivanje digitalnog života: Dalje od lozinki",
+    "excerpt": "Vodič za Vaultwarden i WireGuard za sigurno upravljanje lozinkama i bezbedan udaljeni pristup.",
+    "content": "U eri gde se podaci masovno kradu sa cloud servisa, vaša prva linija odbrane mora biti pod vašom direktnom kontrolom.\n\n### 🔐 Vaultwarden: Sigurnost bez kompromisa\nBitwarden je odličan, ali Vaultwarden je lagana verzija koju možete hostovati sami.\n- **Zero Knowledge:** Provajder nikada ne vidi vaše lozinke jer su enkriptovane lokalno.\n- **2FA:** Podržava YubiKey, TOTP i najnovije Passkeys standarde.\n- **Besplatne Premium funkcije:** Deljenje lozinki u organizaciji i izveštaji o bezbednosti su uključeni.\n\n### 🛡️ WireGuard: Vaš privatni tunel\nVPN servisi su popularni, ali WireGuard vam omogućava da napravite sopstveni, brzi i sigurni tunel.\n- **Pristup kući:** Pristupite svom NAS-u ili self-hosted aplikacijama kao da ste kod kuće, čak i kad ste na drugom kraju sveta.\n- **Bezbednost na javnom Wi-Fi:** Sav saobraćaj je enkriptovan i prolazi kroz vaš kućni internet.\n- **Efikasnost:** Troši minimalno bateriju na mobilnim uređajima u poređenju sa OpenVPN-om.\n\n### 🎯 Plan akcije:\n1. Postavite **Vaultwarden** kao bazu svih vaših kredencijala.\n2. Konfigurišite **WireGuard** na ruteru ili serveru.\n3. Isključite sve 'izložene' portove na ruteru osim jednog za VPN.\n\n🚀 **2026 PRO-TIP: Passkeys Adoption**\nU 2026. godini lozinke su u opadanju. Fokusirajte se na prebacivanje važnih naloga na **Passkeys**. Koristite hardverske ključeve poput Teceo ili Yubico za nivo zaštite koji je nemoguće probiti putem phishing-a.",
+    "category": "saveti",
+    "author": "Uredništvo",
+    "date": "2026-04-09",
+    "readTime": "5 min",
+    "featured": false,
+    "tags": [
+      "sigurnost",
+      "vpn",
+      "lozinke",
+      "vaultwarden",
+      "wireguard",
+      "saveti"
+    ]
+  },
+  {
     "id": "22",
     "slug": "lov-na-dobre-cene-roboti-koji-paze-na-cene-umesto-nas",
     "title": "Lov na dobre cene – Roboti koji paze na cene umesto nas",
