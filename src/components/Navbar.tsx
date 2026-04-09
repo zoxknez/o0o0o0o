@@ -11,6 +11,11 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,9 +50,39 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [isMenuOpen]);
 
+  // Avoid hydration mismatch by rendering a stable structure
+  const headerClasses = [
+    'navbar',
+    'glass',
+    'reveal',
+    !isVisible ? 'navbar-hidden' : '',
+    isMenuOpen ? 'menu-open' : ''
+  ].filter(Boolean).join(' ');
+
+  const mobileMenuClasses = [
+    'mobile-menu',
+    'glass',
+    isMenuOpen ? 'open' : ''
+  ].filter(Boolean).join(' ');
+
+  if (!mounted) {
+    return (
+      <header className="navbar glass">
+        <div className="container">
+          <nav className="navbar-inner">
+            <div className="navbar-brand">
+              <span className="navbar-logo">o0o0o0o</span>
+              <span className="navbar-subtitle">IT BLOG</span>
+            </div>
+          </nav>
+        </div>
+      </header>
+    );
+  }
+
   return (
     <>
-      <header className={['navbar', 'glass', 'reveal', !isVisible ? 'navbar-hidden' : '', isMenuOpen ? 'menu-open' : ''].filter(Boolean).join(' ')}>
+      <header className={headerClasses}>
       <div className="container">
         <nav className="navbar-inner" aria-label="Glavna navigacija">
           <Link href="/" className="navbar-brand" id="navbar-logo" aria-label="o0o0o0o početna">
@@ -98,7 +133,7 @@ export default function Navbar() {
       </header>
 
       {/* Mobile Menu Overlay */}
-      <div className={['mobile-menu', 'glass', isMenuOpen ? 'open' : ''].filter(Boolean).join(' ')}>
+      <div className={mobileMenuClasses}>
         <div className="mobile-menu-inner">
           <div className="mobile-search-container">
             <div className="navbar-search glass" role="search">

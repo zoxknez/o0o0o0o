@@ -1,5 +1,158 @@
 [
   {
+    "id": "22",
+    "slug": "lov-na-dobre-cene-roboti-koji-paze-na-cene-umesto-nas",
+    "title": "Lov na dobre cene – Roboti koji paze na cene umesto nas",
+    "excerpt": "Automatizujte praćenje cena na Amazonu i drugim sajtovima koristeći CamelCamelCamel, Keepa, Visualping i Distill.io.",
+    "content": "Kupovina po najboljoj ceni više ne zahteva stalno osvežavanje stranica. Postoje alati (roboti) koji to rade umesto nas i javljaju nam čim cena padne.\n\n![Price Tracking](https://camelcamelcamel.com/cdn-cgi/imagedelivery/xo6xxztHGfobo4prc8GRDw/5a070f4d-565d-4ecd-b9e7-7f288c923900/public)\n\n### 1️⃣ AMAZON PRICE TRACKERI – ISTORIJA CENE & ALERTI\n\n- **CamelCamelCamel – klasika za Amazon**\n  - Ubaciš URL Amazon proizvoda ili ASIN → dobiješ grafikon istorije cene.\n  - Možeš da podesiš tri “tačke”: desired price (Amazon), 3rd party new, 3rd party used.\n  - Radi sa više Amazon tržišta: .com, .co.uk, .de, .fr, .it, .es itd.\n  - Alerti stižu mejlom ili preko browser ekstenzije.\n  - [camelcamelcamel.com](https://camelcamelcamel.com)\n\n- **Keepa – napredni brat od Camela**\n  - Browser ekstenzija koja direktno ugrađuje graf cene ispod Amazon proizvoda.\n  - Detaljna istorija: Amazon, third-party, Warehouse Deals, kuponi…\n  - Podešavaš price watch pravila: minimalni popust ili konkretan iznos.\n  - Obaveštenja: mejl, push, Telegram, RSS…\n  - [keepa.com](https://keepa.com)\n\n### 2️⃣ PRAĆENJE BILO KOJE STRANICE 📉\nOvo je za bilo koji shop, bilo koji sajt, bilo koji broj – kad se promeni, dobijete ping.\n\n- **Visualping – tracking promena na bilo kom sajtu**\n  - Podesiš URL i deo stranice koji te zanima (cena, dugme “Out of stock”, tekst “rasprodato”).\n  - On pravi screenshot / tekstualno poređenje u određenim intervalima.\n  - [visualping.io](https://visualping.io)\n\n- **Distill.io – geek varijanta nadgledanja stranica**\n  - Browser ekstenzija + cloud: može lokalno da prati stranice čak i bez naloga.\n  - Podešavaš tačno koji element na stranici da gleda (CSS selektor, XPath).\n  - [distill.io](https://distill.io)\n\n### 3️⃣ NE SAMO CENA – DOSTUPNOST i RESTOCK 🛒\n- **RESTOCK**: Pratiš “out of stock” i čekaš da se pretvori u “in stock” za artikle poput PS5, novih iPhone modela ili kolekcionarskih figura.\n- **NOVI MODELI**: Pratiš sekciju “novi proizvodi” u određenoj kategoriji.\n- **PROMENA SPECIFIKACIJA**: Alatke ti pokazuju ako je trgovac promenio tekst/specifikaciju proizvoda na istom URL-u.\n\n🚀 **2026 PRO-TIP: AI Shopping Stacking**\nNajbolja strategija za uštedu u 2026. je \"stacking\": koristite AI asistente poput **Honey** ili **Capital One Shopping** za automatsko pronalaženje kupona, dok za proveru istorije cene i dalje koristite **Keepa**. Za napredne korisnike, tu je **TaskMonkey AI** koji prati cene nakon kupovine i pomaže vam da dobijete refund ako cena padne u roku od 14 dana.",
+    "category": "saveti",
+    "author": "Uredništvo",
+    "date": "2026-04-09",
+    "readTime": "4 min",
+    "featured": false,
+    "tags": [
+      "kupovina",
+      "amazon",
+      "price-tracker",
+      "popusti",
+      "saveti"
+    ]
+  },
+  {
+    "id": "21",
+    "slug": "sos-emergency-aplikacije-i-podesavanja",
+    "title": "SOS & Emergency – 🆘📱",
+    "excerpt": "Kako povećati šansu za preživljavanje koristeći mobilne aplikacije i ugrađene funkcije telefona u hitnim situacijama.",
+    "content": "U hitnim situacijama svaka sekunda je bitna. Službe ponekad ne reaguju dovoljno brzo, pa je važno da sami preduzmemo korake za ličnu bezbednost.\n\n![SOS Emergency](https://play-lh.googleusercontent.com/F6N02BEdGhfUOJUDjKw0CW_xm6VMwadVvsewJ9LaZIzPhl1ukT3mXRMcydxKM4tk8nU)\n\n### 1️⃣ PRVA POMOĆ U DŽEPU 🩹\n- **Prva pomoć – Crveni krst (Srbija)**\n  - Mini-priručnik koji pokriva krvarenja, gušenje, opekotine, infarkt itd.\n  - [Android (Google Play)](https://play.google.com/store/apps/details?id=rs.org.crvenikrst011.prvapomoc)\n- **First Aid – IFRC (globalno)**\n  - Offline uputstva uz ilustracije i kratke kvizove.\n  - [Android](https://play.google.com/store/apps/details?id=com.cube.gdpc.fa) | [iOS](https://apps.apple.com/app/first-aid-ifrc/id1312876691)\n\n### 2️⃣ GLOBALNI SOS BROJEVI 🌍📞\n- **EchoSOS**\n  - Aplikacija koja prepoznaje državu i prikazuje odgovarajuće hitne brojeve.\n  - Šalje GPS lokaciju spasiocima i čuva medicinske podatke (alergije, terapije).\n  - [Web](https://echosos.com) | [Android](https://play.google.com/store/apps/details?id=ch.mobilemed.echo112) | [iOS](https://apps.apple.com/app/echosos/id613058743)\n\n### 3️⃣ SOS ZA GLUVE I NAGLUVE (SRBIJA) 👂🆘\n- **SOS za gluve**\n  - Video-poziv sa prevodiocem znakovnog jezika koji dalje komunicira sa hitnim službama.\n  - [Web](https://soszagluve.rs) | [Android](https://play.google.com/store/apps/details?id=rs.relay.app)\n\n### 4️⃣ LIČNA BEZBEDNOST & “PANIC BUTTON” 🧍‍♀️🚨\n- **Life360**: Porodični lokator sa deljenjem lokacije u realnom vremenu i SOS alarmom. [life360.com](https://life360.com)\n- **bSafe / HollieGuard / UrSafe**: Aplikacije koje šalju lokaciju, pokreću audio/video snimanje i nude “Follow me” mod.\n  - [bSafe Android](https://play.google.com/store/apps/details?id=com.bipper.app.bsafe)\n  - [HollieGuard Android](https://play.google.com/store/apps/details?id=com.mm.hollieguard)\n\n### 5️⃣ PODRŠKA ŽENAMA U OPASNOSTI (SRBIJA) 🙍‍♀️🆘\n- **Bezbedna – Autonomni ženski centar**: Šalje SMS poruku “zaštitnicima” uz lokaciju jednim pritiskom na dugme. [womenngo.org.rs](https://womenngo.org.rs)\n- **“Skrivena” SOS aplikacija**: Maskirana aplikacija za žrtve nasilja u porodici (Mreža SOS Vojvodina). [sosvojvodina.org](https://sosvojvodina.org)\n\n### 6️⃣ UGRAĐENI SOS U TELEFONU 📱\n- **Android**: Settings → Safety & emergency → Emergency SOS. Podesite kontakte i Earthquake alerts.\n- **iPhone**: Health → Medical ID. Omogućava pristup medicinskim podacima sa zaključanog ekrana.\n\n### 💡 Mini check-lista:\n1. Podesite **emergency kontakte** u sistemskim podešavanjima.\n2. Instalirajte bar jednu **aplikaciju prve pomoći**.\n3. Za žene i osobe u riziku, upoznajte se sa aplikacijama **Bezbedna** i servisima **SOS Vojvodina**.\n\n🚀 **2026 PRO-TIP: Satelitska revolucija**\nAko posedujete **iPhone 14+** ili **Pixel 9+**, obavezno testirajte **Satellite SOS** demo mod. Ova tehnologija omogućava da pošaljete poruku hitnim službama direktno preko satelita kada ste u zoni bez ikakvog signala. Ne zaboravite da kompletirate podešavanja dok još imate internet konekciju.",
+    "category": "saveti",
+    "author": "Uredništvo",
+    "date": "2026-04-09",
+    "readTime": "6 min",
+    "featured": false,
+    "tags": [
+      "sos",
+      "emergency",
+      "prva-pomoć",
+      "bezbednost",
+      "saveti"
+    ]
+  },
+  {
+    "id": "20",
+    "slug": "tracking-univerzalni-servisi-za-pakete-vozove-brodove",
+    "title": "Tracking: Univerzalni servisi za praćenje paketa, vozova i brodova",
+    "excerpt": "Najbolji svetski servisi za praćenje pošiljki (AliExpress, Temu) i logistiku (vozovi, brodovi, kargo) na jednom mestu.",
+    "content": "Kad naručujemo sa AliExpress / Amazon / eBay / Temu, a nemamo pojma ko zapravo transportuje pošiljku – univerzalni trackeri rešavaju stvar.\n\n![Tracking](https://spedition25h.com/uploads/topics/17571071396706.jpg)\n\n### 1. Univerzalni tracking za SVE pakete 🌍📦\n\n- **17TRACK – all-in-one global tracking**\n  - Podržava 2500+ kurira i poštanskih službi u 220+ zemalja (USPS, UPS, FedEx, DHL, nacionalne pošte itd.).\n  - Sam pokušava da prepozna koji je kurir po broju pošiljke, možeš da pratiš više paketa na jednoj listi.\n  - [17track.net](https://17track.net)\n\n- **Parcels – fokus na online šopove**\n  - Specijalizovan za AliExpress, Temu, Amazon, eBay, Shein i slične – proba sve moguće kurire dok ne nađe pravog.\n  - [parcelsapp.com](https://parcelsapp.com)\n\n- **4Tracking – international package tracking**\n  - Još jedan “all-carriers” servis, prati pošiljke po svetu, automatski detektuje kurira po formatu broja.\n  - [4tracking.net](https://4tracking.net)\n\n- **TrackingMore – više za “power user” / biz stranu**\n  - Multi-carrier tracking platforma (1500+ kurira i 90+ avio-kompanija).\n  - Ima i javnu tracking stranicu gde možeš da uneseš broj i dobiješ status, ali je primarno okrenut ka firmama (API, notifikacije, analitika).\n  - [trackingmore.com](https://trackingmore.com)\n\n- **Postal Ninja – univerzalni postal/courier tracking**\n  - Praćenje paketa iz raznih nacionalnih pošta i kurirskih službi (US, UK, DE, CN itd.) na jednom mestu.\n  - [postal.ninja](https://postal.ninja)\n\n- **Packages / Parcel Tracker (mobilne aplikacije)**\n  - Više mobilna varijanta – uneseš ili uvezeš brojeve pošiljki (npr. direktno sa AliExpress, Amazon, Temu) i pratiš sve u jednoj aplikaciji.\n  - (App Store / Google Play: “Packages – track your parcels”, “17TRACK”, “Parcels” itd.)\n\n### 2. Vozovi i autobusi – međunarodne rute 🚆🚌\n\n- **Trainline – vozovi (i autobusi) kroz celu Evropu**\n  - Pretražuje i prodaje karte za 260+ železničkih i autobusnih kompanija u Evropi i UK.\n  - Vidiš red vožnje, cene, presedanja i često live info (peroni, kašnjenja).\n  - [thetrainline.com](https://thetrainline.com)\n\n- **Omio – voz + bus + avion + trajekt u jednoj app**\n  - Upoređuje rute i cene za vozove, autobuse, letove i trajekte u Evropi, SAD i Kanadi.\n  - Za logistiku ti služi kao centralno mesto za redove vožnje i rezervacije, sa ticketom u app-u.\n  - [omio.com](https://omio.com)\n\n- **Rail Europe – evropski vozovi i rail pass-ovi**\n  - Fokus baš na vozovima po Evropi (35 zemalja): redovi vožnje, karte, pass-ovi.\n  - [raileurope.com](https://raileurope.com)\n\n- **Flix (FlixBus / FlixTrain) – međunarodni autobusi i vozovi**\n  - Mreža low-cost autobusa i nekih vozova preko 40+ zemalja.\n  - [global.flixbus.com](https://global.flixbus.com) | [flix.com](https://flix.com)\n\n### 3. Brodovi i kontejneri – marine traffic 🚢\n\n- **MarineTraffic – globalni ship tracking**\n  - Live pozicije brodova i jahti širom sveta (AIS podaci), info o brodu, luci, ruti.\n  - [marinetraffic.com](https://marinetraffic.com)\n\n- **VesselFinder – real-time AIS tracking**\n  - Free AIS tracking: brodovi, tip, brzina, destinacija, ruta.\n  - [vesselfinder.com](https://vesselfinder.com)\n\n- **MyShipTracking / MarineTraffic Live varijante**\n  - Slični servisi koji koriste AIS mrežu da prikažu kretanje brodova i kontejnera.\n  - [myshiptracking.com](https://myshiptracking.com)\n\n🚀 **2026 PRO-TIP: Satelitski i multimodalni tracking**\nZa maksimalnu preciznost koristite **Flightradar24** za praćenje aviona u realnom vremenu (putem ADS-B mreže) i **MarineTraffic** sa satelitskim AIS-om za brodove koji su van dometa obalnih stanica. Ovo vam omogućava da znate tačnu lokaciju paketa ili prevoza čak i usred okeana.",
+    "category": "saveti",
+    "author": "Uredništvo",
+    "date": "2026-04-09",
+    "readTime": "5 min",
+    "featured": false,
+    "tags": [
+      "tracking",
+      "paketi",
+      "logistika",
+      "saveti",
+      "aliexpress"
+    ]
+  },
+  {
+    "id": "19",
+    "slug": "kako-osloboditi-prostor-na-gmail-nalogu",
+    "title": "Kako osloboditi prostor na Gmail nalogu (Storage full)",
+    "excerpt": "Praktični koraci za brzo čišćenje Gmail-a, Google Photos-a i Drive-a bez brisanja važnih podataka.",
+    "content": "Ako Gmail počne da prikazuje “Storage full” 15GB i mejlovi više ne stižu, na vašem nalogu možete u par koraka da oslobodite prostor.\n\n![Gmail Storage](https://static-cdn.toi-media.com/www/uploads/2022/12/Gmail-logo-color.jpeg)\n\n**SAVET:** Ukoliko vam je budžet dozvoljava, razmislite o dokupljivanju prostora (npr. 100 GB za oko 150-200 RSD mesečno). Ukoliko ne želite da plaćate, pratite ove korake, ali budite oprezni da ne obrišete važne stvari.\n\n### 1. Gmail pretraga koja otkriva sve fajlove\nNa vašem Gmail nalogu koristite naprednu pretragu. U polje za Search redom copy-paste ove filtere:\n\n- `has:attachment larger:10M` – Pronalazi mejlove sa prilozima većim od 10MB.\n- `filename:pdf larger:10M` – Pronalazi velike PDF dokumente.\n- `older_than:1y has:attachment` – Mejlovi stariji od godinu dana sa prilogom.\n- `filename:mp4` – Video fajlovi u mejlovima.\n- `filename:zip` – Arhivirani fajlovi.\n- `filename:docx` – Word dokumenti.\n\n**Šta uraditi:**\n1. Kliknite na kvadratić za selekciju.\n2. \"Select all conversations\".\n3. Kliknite na Delete.\n**Napomena:** Isto ponovite i u Sent folderu, jer i poslati mejlovi sa prilozima zauzimaju prostor.\n\n### 2. Google Photos – Čišćenje fotografija i videa\nPošto isti storage dele Gmail, Google Drive i Google Photos, sledeći korak je čišćenje fotografija.\n- Otvorite Google Photos (aplikacija ili web).\n- Uđite u **Settings / Photos settings**.\n- Otiđite na **Backup → Manage storage**.\n- U sekciji **Review and delete / Review items** proverite:\n  – velike video fajlove\n  – stare WhatsApp backup-e\n  – snimke ekrana\n  – memove i screen recording-e\n\n### 3. Odvajanje i brisanje promotivnih mejlova\nSređivanje reklamnih poruka koje se godinama nakupljaju u namenskim folderima.\n- Gmail → ⚙️ Settings → See all settings → kartica **Inbox**.\n- Uključite Default inbox i obeležite **Promotions** (ako već nije).\n- Save changes.\n- U pretragu uneti: `category:promotions`.\n- Ponovo: **Select all → Select all conversations → Delete**.\n- Po želji, isto se može uraditi i sa: `category:social`, `category:forums`, `category:updates`.\n\n### 4. Obavezno: Ispraznite sve korpe\nTek tada oslobođen prostor stvarno postaje dostupan.\n- U Gmail-u otvorite Trash i Spam → **Empty Trash now / Delete forever**.\n- U Google Drive-u otvoriti Trash / Bin → **isprazniti**.\n- U Google Photos-u otvoriti Trash → **isprazniti**.\n\n🚀 **2026 UPDATE: AI Magic Eraser za Storage**\nGoogle One sada nudi **AI Assistant for Storage** koji automatski prepoznaje mutne fotografije, nepotrebne screen recording-e i duple screenshot-ove. Umesto ručnog brisanja, pokrenite ovaj alat jednom mesečno da automatski očistite nekoliko gigabajta \"digitalnog otpada\".",
+    "category": "saveti",
+    "author": "Uredništvo",
+    "date": "2026-04-09",
+    "readTime": "4 min",
+    "featured": false,
+    "tags": [
+      "gmail",
+      "google",
+      "storage",
+      "saveti",
+      "cloud"
+    ]
+  },
+  {
+    "id": "18",
+    "slug": "osnovni-i-napredni-trikovi-za-google-pretragu",
+    "title": "Osnovni i napredni trikovi za Google pretragu",
+    "excerpt": "Naučite kako da koristite operatore pretrage da biste pronašli upravo ono što tražite u rekordnom roku.",
+    "content": "Google pretraga je moćan alat ako znate prave komande. Evo spiska najkorisnijih operatora, trikova i skrivenih funkcija.\n\n![Google Trikovi](https://www.mreza-mira.net/wp-content/uploads/2020/08/google-trikovi.png)\n\n### ✅ A) OSNOVNI OPERATORI (svakodnevna upotreba)\n\n1. **Pretraga tačnih fraza**: `\"tačna fraza\"` (npr. `\"Twitter korisni servisi\"`).\n2. **Isključivanje reči**: `-reč` (npr. `jaguar -automobil`).\n3. **Alternativa / izbor (OR)**: `pojam1 OR pojam2` (ili: `pojam1 | pojam2`).\n4. **Grupisanje uslova**: `(A OR B) C` (npr. `(InDesign OR Quark) “prelom knjige”`).\n5. **Zvezdica kao zamena (Wildcard)**: `\"neka * fraza\"` (npr. `\"najbolji * IT servisi\"`).\n6. **Opseg brojeva**: `broj..broj` (npr. `SSD 512..2048 NVMe`).\n7. **Cene**: `$broj` ili `€broj` (npr. `laptop $800`).\n\n### ✅ B) SAJT / DOMEN / URL (gde tačno da traži)\n\n8. **Pretraga unutar određenog sajta**: `site:domen.com pojam` (npr. `site:wikipedia.org \"IT saveti\"`).\n9. **Pretraga unutar dela sajta**: `site:domen.com/putanja pojam`.\n10. **Pretraga po TLD-u**: `site:.rs pojam` (npr. pretraga samo po srpskim domenima).\n11. **Isključi ceo sajt iz rezultata**: `-site:domen.com pojam` (npr. `NVIDIA driver -site:reddit.com`).\n12. **Pronalaženje srodnih sajtova**: `related:domen.com` (npr. `related:amazon.com`).\n\n### ✅ C) NASLOV / TEKST / URL (precizno filtriranje)\n\n13. **Reč u naslovu strane**: `intitle:reč pojam`.\n14. **Više reči u naslovu**: `allintitle:reč1 reč2`.\n15. **Reč u URL-u**: `inurl:reč pojam` (ciljanje stranica poput /login /docs /download).\n16. **Više reči u URL-u**: `allinurl:reč1 reč2`.\n17. **Reč u tekstu strane**: `intext:\"fraza\" pojam`.\n18. **Više reči u tekstu**: `allintext:reč1 reč2`.\n19. **Blizina pojmova (Proximity)**: `A AROUND(3) B` (pojmovi blizu jedan drugom u tekstu).\n20. **Reč u anchor tekstu linkova**: `inanchor:reč`.\n\n### ✅ D) DOKUMENTI / FAJLOVI (PDF, DOC, PPT…)\n\n21. **Pretraga određenog tipa fajla**: `filetype:pdf pojam` (ili docx, pptx, xlsx...).\n22. **Alternativa za filetype**: `ext:pdf pojam`.\n\n### ✅ E) VREME / “SVEŽINA”\n\n23. **Rezultati posle određenog datuma**: `pojam after:YYYY-MM-DD`.\n24. **Rezultati pre određenog datuma**: `pojam before:YYYY-MM-DD`.\n\n### ✅ F) QUICK CACHE\n\n25. **Keširana verzija strane**: `cache:URL`.\n\n### ✅ G) GOOGLE IMAGES\n\n26. **Tačna dimenzija slike**: `imagesize:1200x800 pojam`.\n27. **Traženje po image URL-u**: `src:URL_slike`.\n\n### 🛠️ GOOGLE KAO ALAT (instant komande)\n\n28. **Kalkulacije**: Samo ukucajte izraz kao `2+2*78-3.14`.\n29. **Konverzije**: `100 eura to rsd`, `20 feet to meters`.\n30. **Sunce**: `sunrise [grad]` / `sunset [grad]`.\n31. **Definicije**: `define:algoritam`.\n32. **Meteo/Berza**: `weather:Belgrade`, `stocks:NVDA`.\n33. **Mapa**: `map:Temišvar`.\n34. **Film**: `movie:Oppenheimer`.\n35. **Timer**: `timer 10 minutes`.\n36. **Metronom**: `metronome`.\n37. **Random**: `flip a coin`, `roll a die`, `random number 1-100`.\n38. **Boje**: `color picker`, `rgb to hex`.\n\n### 😂 ZABAVNE FORE (Easter Eggs)\n\n39. **Klasika**: `do a barrel roll`, `askew`, `google in 1998`, `Pac-Man`, `solitaire`, `snake`.\n40. **Nerd Fore**: `recursion`, `the answer to life the universe and everything` (42).\n41. **Pop-kultura**: `The Last of Us` (klik na pečurku), `Wizard of Oz` (klik na cipelice).\n\n🚀 **2026 PRO-TIP: Kako pretraživati pored AI-ja**\nOd 2026. Google masovno koristi **AI Overviews**. Ako želite da vidite samo klasične rezultate bez AI generisanog rezimea, koristite **\"Web\" tab** na vrhu rezultata. Takođe, koristite konverzacijske follow-up-ove u AI snapshots-u (dugme \"Ask anything\") da biste produbili pretragu bez ponavljanja celog upita.",
+    "category": "saveti",
+    "author": "Uredništvo",
+    "date": "2026-04-09",
+    "readTime": "8 min",
+    "featured": false,
+    "tags": [
+      "google",
+      "search",
+      "trikovi",
+      "saveti",
+      "pretraga"
+    ]
+  },
+  {
+    "id": "17",
+    "slug": "objedinjeni-javni-servisi-i-e-usluge-srbija",
+    "title": "Objedinjeni korisni javni servisi i e-usluge na jednom mestu",
+    "excerpt": "Sve važne e-usluge i portali u Srbiji na jednom mestu: od katastra i poreza do zdravstva i APR-a.",
+    "content": "Digitalna transformacija Srbije je donela mnogo korisnih portala. Evo objedinjenog spiska važnih servisa na jednom mestu.\n\n![Korisni Servisi](https://pbs.twimg.com/media/G_pqL0iXIAAOxAy?format=jpg&name=medium)\n\n### ⚖️ Pravosuđe i sudski predmeti\n- **Portal sudova (Tok predmeta)**: [portal.sud.rs](https://portal.sud.rs)\n- **Prekršajni sudovi**: [sipres.sud.rs](https://sipres.sud.rs)\n- **Registar kazni**: [rnk.sipres.sud.rs](https://rnk.sipres.sud.rs)\n- **Registar izvršnih dužnika**: [rid.sud.rs](https://rid.sud.rs)\n- **Prinudna naplata (Pretraga dužnika)**: [NBS WebAppCenter](https://webappcenter.nbs.rs/PnWebApp/EnforcedCollectionDebtor/EnforcedCollectionDebtor/Index?isSearchExecuted=false&)\n- **Besplatna pravna pomoć**: [paragraf.rs](https://paragraf.rs/besplatna_pravna_pomoc.html)\n\n### 🏠 Imovina i porezi\n- **eKatastar**: [ekatastar.rgz.gov.rs](https://ekatastar.rgz.gov.rs)\n- **Status predmeta RGZ**: [katastar.rgz.gov.rs/eprovera](https://katastar.rgz.gov.rs/eprovera)\n- **Porez na imovinu (LPA)**: [lpa.gov.rs](https://lpa.gov.rs) (App: Moja LPA)\n- **ePorezi**: [eporezi.purs.gov.rs](https://eporezi.purs.gov.rs)\n- **Registar založnog prava (APR)**: [apr.gov.rs](https://apr.gov.rs)\n- **Registar cena nekretnina**: [katastar.rgz.gov.rs/registar-cena-nepokretnosti/](https://katastar.rgz.gov.rs/registar-cena-nepokretnosti/)\n\n### 💼 Poslovanje i firme\n- **APR**: [apr.gov.rs](https://apr.gov.rs)\n- **Portal javnih nabavki**: [jnportal.ujn.gov.rs](https://jnportal.ujn.gov.rs)\n- **SEF (Fakture)**: [efaktura.gov.rs](https://efaktura.gov.rs)\n- **Registar udruženja**: [apr.gov.rs](https://apr.gov.rs)\n\n### 🏢 Komunalne usluge (Računi)\n- **eSanduče (Infostan)**: [esanduce.rs](https://esanduce.rs)\n- **Informatika NS**: [nsinfo.co.rs](https://nsinfo.co.rs)\n- **EPS (Uvid u račun)**: [portal.edb.rs](https://portal.edb.rs)\n- **Objedinjena naplata Niš**: [on.rs](https://on.rs)\n\n### 🚗 Saobraćaj i putovanja\n- **eUprava prekršaji**: [euprava.gov.rs](https://euprava.gov.rs)\n- **Kamere (Putevi Srbije)**: [putevi-srbije.rs](https://putevi-srbije.rs)\n- **Tag (Enpay)**: [enpay.rs](https://enpay.rs)\n- **Stanje na granicama (AMSS)**: [amss.org.rs](https://amss.org.rs)\n\n### 🏥 Zdravstvo i socijalno\n- **eZdravlje**: [e-zdravlje.gov.rs](https://e-zdravlje.gov.rs)\n- **Provera markice RFZO**: [rfzo.rs](https://rfzo.rs/index.php/osiguranalica/provera-overe-zdrisp)\n- **eRecept**: [erecept.zdravlje.gov.rs](https://erecept.zdravlje.gov.rs)\n- **CROSO (Centralni registar)**: [croso.gov.rs](https://croso.gov.rs)\n\n### 🚜 Poljoprivreda i prosveta\n- **eAgrar**: [eagrar.gov.rs](https://eagrar.gov.rs)\n- **Moja srednja škola**: [mojasrednjaskola.gov.rs](https://mojasrednjaskola.gov.rs)\n- **eDnevnik**: [mojdnevnik.prosveta.gov.rs](https://mojdnevnik.prosveta.gov.rs)\n- **eVrtić**: [euprava.gov.rs](https://euprava.gov.rs)\n\n### 🛂 Digitalni identitet i bezbednost\n- **ConsentID (Ključ za sve)**: App ConsentID\n- **eUprava (Glavni portal)**: [euprava.gov.rs](https://euprava.gov.rs)\n- **Registar \"Ne zovi\"**: [nezovi.ratel.rs](https://nezovi.ratel.rs)\n\n🚀 **2026 UPDATE: Maksimalna bezbednost i dokumenti**\nObavezno koristite **ConsentID** aplikaciju sa najvišim nivoom pouzdanosti (L3 security). To vam omogućava pristup najosetljivijim uslugama i potpisivanje dokumenata u oblaku direktno sa telefona. Takođe, proverite novu sekciju **Digitalni novčanik** u okviru eUprave za čuvanje biometrijskih dokumenata.",
+    "category": "saveti",
+    "author": "Uredništvo",
+    "date": "2026-04-09",
+    "readTime": "6 min",
+    "featured": false,
+    "tags": [
+      "e-uprava",
+      "srbija",
+      "servisi",
+      "porez",
+      "saveti"
+    ]
+  },
+  {
+    "id": "16",
+    "slug": "no-code-automatizacija-ai-radi-umesto-nas",
+    "title": "No-code automatizacija – AI radi umesto nas",
+    "excerpt": "Spojite servise kao što su Gmail, Sheets, Twitter i Notion i podesite da se radnje dešavaju automatski bez koda.",
+    "content": "Šta je zapravo no-code automatizacija? To je mogućnost da spojiš različite servise tako da se radnje dešavaju automatski po principu **IF THIS → THEN THAT**.\n\n![No-code Automation](https://www.itnetwork.rs/wp-content/uploads/2026/04/no-code-automatizacija-1.png)\n\n👇 **Alati koji ti to omogućavaju bez ijedne linije koda:**\n\n### 1️⃣ ZAPIER – “mainstream mozak” za automatizaciju\nNajpoznatija no-code platforma koja spaja 8000+ aplikacija.\n- **Zaps**: TRIGGER (okidač) + ACTION (akcija).\n- **Logika**: Filteri, više koraka, grane, uslovi, webhooks.\n- **Primeri**: Novi mejl klijenta → CRM upis → Slack obaveštenje.\n- [zapier.com](https://zapier.com)\n\n### 2️⃣ MAKE (bivši Integromat) – vizuelne “šeme”\nNo-code alat sa jakim vizuelnim editorom (mapa mehurića).\n- **Prednosti**: Više grana, petlje, routeri, agregacije. Odličan balans snage i pristupačnosti.\n- **AI Integracije**: LLM-ovi, agenti, obrade teksta.\n- **Primeri**: Novi red u Airtable → API call → Upiši nazad.\n- [make.com](https://make.com)\n\n### 3️⃣ IFTTT – “ako se desi X → neka se desi Y” za obične ljude\nNajjednostavniji za početak, posebno za smart home uređaje.\n- **Applets**: Gotovi recepti za automatizaciju (npr. lokacija na telefonu).\n- **Primeri**: Objava na X → Google Sheet arhiva; Dolazak kući → Upali svetla.\n- [ifttt.com](https://ifttt.com)\n\n### 4️⃣ ACTIVEPIECES – otvoreni “Zapier” koji možeš da sam hostuješ\nOpen-source alternativa uz veću kontrolu nad podacima.\n- **Karakteristike**: Fokus na AI korake, Docker podrška, on-prem instalacija.\n- **Primeri**: Form submission → Interni server storage → Email follow-up.\n- [activepieces.com](https://activepieces.com)\n\n### 5️⃣ n8n – open-source zver za power-usere\nWorkflow platforma sa mogućnošću pisanja sopstvenog koda unutar vizuelnih nodova.\n- **Snaga**: Integracije sa internim bazama, AI agent flows, LLM obrade.\n- **Primeri**: Webhook → Obrada podataka → Upis u više sistema (billing, support).\n- [n8n.io](https://n8n.io)\n\n### 💡 KONKRETNE IDEJE ZA AUTOMATIZACIJE\n1. **Gmail → Sheets → Telegram**: Svaki mejl označen sa [FAKTURA] upiši u tabelu i javi porukom.\n2. **Twitter/X → Sheets**: Arhiviranje tvitova sa određenim hashtagom u realnom vremenu.\n3. **Forme → Notion**: Automatsko kreiranje lead-ova u bazi podataka.\n4. **Kalendar → Podsetnik**: Summary sutrašnjih obaveza svako veče u 20h.\n\n### ŠTA IZABRATI?\n- **Početnik**: IFTTT\n- **Freelance/Mali biznis**: Zapier ili Make\n- **Self-host/Power-user**: Activepieces ili n8n\n\n🚀 **2026 PRO-TIP: Agentic Automation**\nU 2026. godini fokus se seli sa prostih IF-THEN pravila na **AI Agente**. Portali poput **n8n** i **Activepieces** sada omogućavaju vizuelno slaganje RAG (Retrieval-Augmented Generation) lanaca, gde AI agent ne samo da prenosi podatke, već ih analizira, donosi odluke i izvršava kompleksne zadatke bez ljudskog nadzora.",
+    "category": "saveti",
+    "author": "Uredništvo",
+    "date": "2026-04-09",
+    "readTime": "6 min",
+    "featured": true,
+    "tags": [
+      "no-code",
+      "automatizacija",
+      "ai",
+      "productivity",
+      "saveti"
+    ]
+  },
+  {
+    "id": "15",
+    "slug": "udemy-ai-engineer-2026-complete-course",
+    "title": "[Udemy] AI Engineer 2026 Complete Course, GEN AI, Deep, Machine, LLM",
+    "excerpt": "Master Machine Learning, Deep Learning, LLMs & AI Systems with hands-on, real-world projects. Sveobuhvatan vodič za AI inženjering u 2026. godini.",
+    "content": "**Format:** MP4 | **Video:** h264, 1920x1080 | **Audio:** AAC, 44.1 KHz, 2 Ch\n**Jezik:** Engleski + titlovi | **Trajanje:** 126 predavanja (18h 45m) | **Veličina:** 8.70 GB\n\nSavladajte Machine Learning, Deep Learning, LLM modele i AI sisteme kroz praktične projekte iz stvarnog sveta.\n\n![AI Engineer 2026](https://lookimg.com/images/2026/02/07/3M4dI.jpg)\n\n### Šta ćete naučiti:\n- Izgradnja i evaluacija Machine Learning modela koristeći regresiju, klasifikaciju i klasterizaciju.\n- Dizajniranje, treniranje i otklanjanje grešaka u Deep Learning modelima (CNN, RNN, LSTM) koristeći PyTorch ili TensorFlow.\n- Implementacija Transformer-based Large Language modela (LLMs), uključujući fine-tuning i tokenizaciju.\n- Kreiranje Generative AI aplikacija koristeći prompt engineering, RAG (Retrieval-Augmented Generation) i semantičku pretragu.\n- Razvoj agentičkih AI sistema koji obavljaju kompleksno rezonovanje i izvršavanje zadataka.\n- Primena najboljih praksi AI inženjeringa (optimizacija modela, kontrola troškova, skaliranje).\n- Integracija AI modela u realne aplikacije kroz full-stack arhitekturu.\n\n### Preduslovi:\n- Osnovno poznavanje Python programiranja.\n- Radoznalost i želja za razumevanjem kako AI funkcioniše \"ispod haube\".\n- Nije potrebno prethodno iskustvo u ML, DL ili GenAI — sve je objašnjeno od osnova do produkcije.\n\n### Kome je kurs namenjen:\n- Budućim AI inženjerima.\n- Software inženjerima koji žele prelazak u AI sferu.\n- Data analitičarima i naučnicima koji žele da unaprede svoje veštine.\n- Studentima i profesionalcima koji se pripremaju za uloge fokusirane na AI.\n\n### Linkovi za preuzimanje:\n\n**FreeDL**\n- [Part 1 (frdl.io)](https://frdl.io/3ltq5a7tz69q)\n- [Part 2 (frdl.io)](https://frdl.io/31h5truuw613)\n- [Part 3 (frdl.io)](https://frdl.io/rpbe0u4l58p7)\n- [Part 4 (frdl.io)](https://frdl.io/jpj3zn8r9tjf)\n- [Part 5 (frdl.io)](https://frdl.io/ibngzf7k5b00)\n\n**UsersDrive**\n- [Part 1 (usersdrive.com)](https://usersdrive.com/8buaze9jxdjk.html)\n- [Part 2 (usersdrive.com)](https://usersdrive.com/03kz9cmkyskw.html)\n- [Part 3 (usersdrive.com)](https://usersdrive.com/zu4zzr0gvyvw.html)\n- [Part 4 (usersdrive.com)](https://usersdrive.com/l5mb13peszur.html)\n- [Part 5 (usersdrive.com)](https://usersdrive.com/pmkwp03l63j1.html)\n\n**ClicknUpload**\n- [Part 1 (clicknupload.click)](https://clicknupload.click/3rlkwornx6yb)\n- [Part 2 (clicknupload.click)](https://clicknupload.click/xx7ac1j9o6ut)\n- [Part 3 (clicknupload.click)](https://clicknupload.click/ef1i8cb4n0ks)\n- [Part 4 (clicknupload.click)](https://clicknupload.click/xobjxscnof96)\n- [Part 5 (clicknupload.click)](https://clicknupload.click/tqo84979qyjd)",
+    "category": "tutorijali",
+    "author": "Uredništvo",
+    "date": "2026-04-09",
+    "readTime": "5 min",
+    "featured": true,
+    "tags": [
+      "ai",
+      "udemy",
+      "tutorijal",
+      "llm",
+      "machine-learning",
+      "deep-learning"
+    ]
+  },
+  {
     "id": "14",
     "slug": "grok-ai-premium-mod-1-1-50",
     "title": "Grok AI v 1.1.50 [Premium]",
@@ -10,7 +163,14 @@
     "date": "2026-04-09",
     "readTime": "3 min",
     "featured": true,
-    "tags": ["android", "grok", "ai", "premium", "aplikacije", "mod"]
+    "tags": [
+      "android",
+      "grok",
+      "ai",
+      "premium",
+      "aplikacije",
+      "mod"
+    ]
   },
   {
     "id": "13",
@@ -23,7 +183,13 @@
     "date": "2026-04-09",
     "readTime": "1 min",
     "featured": true,
-    "tags": ["casopis", "pc-press", "it", "srbija", "pdf"]
+    "tags": [
+      "casopis",
+      "pc-press",
+      "it",
+      "srbija",
+      "pdf"
+    ]
   },
   {
     "id": "12",
@@ -36,7 +202,13 @@
     "date": "2026-04-09",
     "readTime": "1 min",
     "featured": false,
-    "tags": ["casopis", "bug", "hrvatska", "it", "pdf"]
+    "tags": [
+      "casopis",
+      "bug",
+      "hrvatska",
+      "it",
+      "pdf"
+    ]
   },
   {
     "id": "11",
@@ -49,7 +221,13 @@
     "date": "2026-04-09",
     "readTime": "1 min",
     "featured": false,
-    "tags": ["casopis", "zabavnik", "politika", "srbija", "pdf"]
+    "tags": [
+      "casopis",
+      "zabavnik",
+      "politika",
+      "srbija",
+      "pdf"
+    ]
   },
   {
     "id": "10",
@@ -62,7 +240,13 @@
     "date": "2026-04-09",
     "readTime": "1 min",
     "featured": false,
-    "tags": ["casopis", "pdf", "linux", "magazin", "format"]
+    "tags": [
+      "casopis",
+      "pdf",
+      "linux",
+      "magazin",
+      "format"
+    ]
   },
   {
     "id": "9",
@@ -75,7 +259,14 @@
     "date": "2026-04-09",
     "readTime": "3 min",
     "featured": true,
-    "tags": ["tutorijal", "ai", "langchain", "programming", "video", "kurs"]
+    "tags": [
+      "tutorijal",
+      "ai",
+      "langchain",
+      "programming",
+      "video",
+      "kurs"
+    ]
   },
   {
     "id": "8",
@@ -88,7 +279,13 @@
     "date": "2026-04-09",
     "readTime": "3 min",
     "featured": false,
-    "tags": ["tutorijal", "udemy", "hardware", "laptop", "elektronika"]
+    "tags": [
+      "tutorijal",
+      "udemy",
+      "hardware",
+      "laptop",
+      "elektronika"
+    ]
   },
   {
     "id": "7",
@@ -101,7 +298,13 @@
     "date": "2026-04-09",
     "readTime": "1 min",
     "featured": false,
-    "tags": ["casopis", "pdf", "computeractive", "it", "magazin"]
+    "tags": [
+      "casopis",
+      "pdf",
+      "computeractive",
+      "it",
+      "magazin"
+    ]
   },
   {
     "id": "6",
@@ -114,7 +317,13 @@
     "date": "2026-04-09",
     "readTime": "3 min",
     "featured": false,
-    "tags": ["android", "notes", "ai", "mod", "premium"]
+    "tags": [
+      "android",
+      "notes",
+      "ai",
+      "mod",
+      "premium"
+    ]
   },
   {
     "id": "5",
@@ -127,7 +336,14 @@
     "date": "2026-04-09",
     "readTime": "4 min",
     "featured": false,
-    "tags": ["android", "launcher", "tv", "projectivy", "mod", "premium"]
+    "tags": [
+      "android",
+      "launcher",
+      "tv",
+      "projectivy",
+      "mod",
+      "premium"
+    ]
   },
   {
     "id": "4",
@@ -140,7 +356,14 @@
     "date": "2026-04-09",
     "readTime": "3 min",
     "featured": false,
-    "tags": ["android", "sai", "installer", "apk", "mod", "premium"]
+    "tags": [
+      "android",
+      "sai",
+      "installer",
+      "apk",
+      "mod",
+      "premium"
+    ]
   },
   {
     "id": "3",
@@ -153,7 +376,13 @@
     "date": "2026-04-09",
     "readTime": "2 min",
     "featured": false,
-    "tags": ["android", "horoscope", "pro", "bundle", "aplikacije"]
+    "tags": [
+      "android",
+      "horoscope",
+      "pro",
+      "bundle",
+      "aplikacije"
+    ]
   },
   {
     "id": "2",
@@ -166,7 +395,13 @@
     "date": "2026-04-09",
     "readTime": "3 min",
     "featured": true,
-    "tags": ["android", "ai", "chatbot", "premium", "aplikacije"]
+    "tags": [
+      "android",
+      "ai",
+      "chatbot",
+      "premium",
+      "aplikacije"
+    ]
   },
   {
     "id": "1",
@@ -179,6 +414,11 @@
     "date": "2026-04-08",
     "readTime": "5 min",
     "featured": true,
-    "tags": ["tech", "buducnost", "2026", "vesti"]
+    "tags": [
+      "tech",
+      "buducnost",
+      "2026",
+      "vesti"
+    ]
   }
 ]
