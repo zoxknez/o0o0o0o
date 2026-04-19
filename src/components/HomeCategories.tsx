@@ -16,15 +16,54 @@ const XIcon = ({ size = 24 }: { size?: number }) => (
 );
 
 const categoryConfig = [
-  { slug: 'tutorijali', emoji: '📚', span: 'col-2', tagline: 'Uči. Primeni. Napreduj.' },
-  { slug: 'vesti', emoji: '📡', span: 'col-1', tagline: 'Budi u toku' },
-  { slug: 'android', emoji: '🤖', span: 'col-1', tagline: 'APK i Android' },
-  { slug: 'programi', emoji: '⚙️', span: 'col-2', tagline: 'Alati koji rade za Vas' },
-  { slug: 'operativni-sistemi', emoji: '🖥️', span: 'col-1', tagline: 'Vaš OS, vaša pravila' },
-  { slug: 'igre', emoji: '🎮', span: 'col-1', tagline: 'Igraj. Istraži. Uživaj.' },
-  { slug: 'casopisi', emoji: '📖', span: 'col-2', tagline: 'Znanje pred vama' },
-  { slug: 'saveti', emoji: '💡', span: 'col-1', tagline: 'Sitni trikovi' },
-  { slug: 'zajednica', emoji: '👥', span: 'col-1', tagline: 'Zajedno rastemo' },
+  {
+    slug: 'tutorijali',
+    emoji: '📚',
+    span: 'col-1',
+    tagline: 'Uči. Primeni. Napreduj.',
+  },
+  {
+    slug: 'vesti',
+    emoji: '📡',
+    span: 'col-1',
+    tagline: 'Budi u toku',
+  },
+  {
+    slug: 'programi',
+    emoji: '⚙️',
+    span: 'col-1',
+    tagline: 'Alati koji rade za tebe',
+  },
+  {
+    slug: 'operativni-sistemi',
+    emoji: '🖥️',
+    span: 'col-1',
+    tagline: 'Tvoj OS, tvoja pravila',
+  },
+  {
+    slug: 'igre',
+    emoji: '🎮',
+    span: 'col-1',
+    tagline: 'Igraj. Istraži. Uživaj.',
+  },
+  {
+    slug: 'casopisi',
+    emoji: '📖',
+    span: 'col-1',
+    tagline: 'Čitaj znanje',
+  },
+  {
+    slug: 'saveti',
+    emoji: '💡',
+    span: 'col-1',
+    tagline: 'Sitni trikovi, veliki rezultati',
+  },
+  {
+    slug: 'zajednica',
+    emoji: '👥',
+    span: 'col-1',
+    tagline: 'Zajedno rastemo',
+  },
 ];
 
 export default function HomeCategories() {
@@ -187,7 +226,8 @@ export default function HomeCategories() {
           gap: 16px;
           position: relative;
           z-index: 1;
-          align-items: stretch;
+          padding-top: 0;
+          padding-bottom: 32px;
         }
 
         .col-1 { grid-column: span 1; }
@@ -401,9 +441,17 @@ export default function HomeCategories() {
           opacity: 0.6;
         }
 
-        @media (max-width: 900px) {
-          .bento-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-          .social-hub { grid-template-columns: 1fr; }
+        /* ─── Responsive ─── */
+        @media (max-width: 1100px) {
+          .bento-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 850px) {
+          .bento-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 580px) {
+          .bento-grid { grid-template-columns: 1fr; }
+          .bento-card { min-height: 160px; }
+          .home-header { padding: 48px 24px 32px; }
         }
 
         @media (max-width: 768px) {
