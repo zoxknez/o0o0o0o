@@ -21,6 +21,29 @@ export default function PaginatedPostGrid({ posts, itemsPerPage = 9 }: Props) {
     window.scrollTo({ top: 350, behavior: 'smooth' });
   };
 
+  const getVisiblePages = () => {
+    const pages = [];
+    const maxVisible = 5;
+    
+    if (totalPages <= maxVisible) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+    } else {
+      pages.push(1);
+      if (currentPage > 3) pages.push('...');
+      
+      const start = Math.max(2, currentPage - 1);
+      const end = Math.min(totalPages - 1, currentPage + 1);
+      
+      for (let i = start; i <= end; i++) {
+        if (!pages.includes(i)) pages.push(i);
+      }
+      
+      if (currentPage < totalPages - 2) pages.push('...');
+      if (!pages.includes(totalPages)) pages.push(totalPages);
+    }
+    return pages;
+  };
+
   return (
     <>
       <div className="posts-grid category-posts-grid">
@@ -32,79 +55,41 @@ export default function PaginatedPostGrid({ posts, itemsPerPage = 9 }: Props) {
       </div>
 
       {totalPages > 1 && (
-        <div className="pagination-controls glass-prism" style={{ 
-          display: 'inline-flex', 
-          justifyContent: 'center', 
-          alignItems: 'center',
-          gap: '8px', 
-          marginTop: '64px',
-          padding: '12px 24px',
-          borderRadius: '100px',
-          left: '50%',
-          position: 'relative',
-          transform: 'translateX(-50%)',
-          width: 'max-content'
-        }}>
-          <button
-            disabled={currentPage === 1}
-            onClick={() => handlePageChange(currentPage - 1)}
-            style={{ 
-              opacity: currentPage === 1 ? 0.3 : 0.8, 
-              padding: '8px 16px', 
-              border: 'none', 
-              background: 'none', 
-              color: 'var(--text-primary)', 
-              cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
-              fontWeight: 600,
-              fontSize: '0.8rem',
-              textTransform: 'uppercase',
-              letterSpacing: '0.1em'
-            }}
-          >
-            &larr; Nazad
-          </button>
-          
-          <div style={{ display: 'flex', gap: '4px', margin: '0 8px' }}>
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-              <button
-                key={page}
-                onClick={() => handlePageChange(page)}
-                style={{
-                  width: '36px', height: '36px',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  borderRadius: '50%',
-                  border: 'none',
-                  background: page === currentPage ? 'var(--accent-cyan)' : 'transparent',
-                  color: page === currentPage ? '#000' : 'var(--text-primary)',
-                  cursor: 'pointer',
-                  fontWeight: 800,
-                  fontSize: '0.9rem',
-                  transition: 'all 0.3s'
-                }}
-              >
-                {page}
-              </button>
-            ))}
+        <div className="pagination-wrapper" style={{ display: 'flex', justifyContent: 'center', width: '100%', marginTop: '64px' }}>
+          <div className="pagination-controls glass-prism">
+            <button
+              className="pagination-btn prev"
+              disabled={currentPage === 1}
+              onClick={() => handlePageChange(currentPage - 1)}
+              aria-label="Prethodna stranica"
+            >
+              <span className="btn-text">&larr; Nazad</span>
+              <span className="btn-icon">&larr;</span>
+            </button>
+            
+            <div className="pagination-numbers">
+              {getVisiblePages().map((page, i) => (
+                <button
+                  key={i}
+                  className={`page-number ${page === currentPage ? 'active' : ''} ${page === '...' ? 'dots' : ''}`}
+                  onClick={() => typeof page === 'number' && handlePageChange(page)}
+                  disabled={page === '...'}
+                >
+                  {page}
+                </button>
+              ))}
+            </div>
+            
+            <button
+              className="pagination-btn next"
+              disabled={currentPage === totalPages}
+              onClick={() => handlePageChange(currentPage + 1)}
+              aria-label="Sledeća stranica"
+            >
+              <span className="btn-text">Napred &rarr;</span>
+              <span className="btn-icon">&rarr;</span>
+            </button>
           </div>
-          
-          <button
-            disabled={currentPage === totalPages}
-            onClick={() => handlePageChange(currentPage + 1)}
-             style={{ 
-              opacity: currentPage === totalPages ? 0.3 : 0.8, 
-              padding: '8px 16px', 
-              border: 'none', 
-              background: 'none', 
-              color: 'var(--text-primary)', 
-              cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
-              fontWeight: 600,
-              fontSize: '0.8rem',
-              textTransform: 'uppercase',
-              letterSpacing: '0.1em'
-            }}
-          >
-            Napred &rarr;
-          </button>
         </div>
       )}
     </>

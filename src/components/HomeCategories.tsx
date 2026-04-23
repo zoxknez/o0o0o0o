@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { categories, getPostsByCategory } from '@/lib/posts';
+import { categories, getPostsByCategory, getAllPosts } from '@/lib/posts';
+import PaginatedPostGrid from '@/components/PaginatedPostGrid';
 
 // Social Icon Components (SVG)
 const GithubIcon = ({ size = 24 }: { size?: number }) => (
@@ -31,26 +32,26 @@ const categoryConfig = [
   {
     slug: 'programi',
     emoji: '⚙️',
-    span: 'col-2',
+    span: 'col-1',
     tagline: 'Alati koji rade za tebe',
   },
   {
     slug: 'android',
     emoji: '🤖',
-    span: 'col-2',
-    tagline: 'Svet u tvom džepu',
-  },
-  {
-    slug: 'operativni-sistemi',
-    emoji: '🖥️',
     span: 'col-1',
-    tagline: 'Tvoj OS, tvoja pravila',
+    tagline: 'Svet u tvom džepu',
   },
   {
     slug: 'igre',
     emoji: '🎮',
     span: 'col-1',
     tagline: 'Igraj. Istraži. Uživaj.',
+  },
+  {
+    slug: 'operativni-sistemi',
+    emoji: '🖥️',
+    span: 'col-2',
+    tagline: 'Tvoj OS, tvoja pravila',
   },
   {
     slug: 'casopisi',
@@ -67,7 +68,7 @@ const categoryConfig = [
   {
     slug: 'zajednica',
     emoji: '👥',
-    span: 'col-1',
+    span: 'col-2',
     tagline: 'Zajedno rastemo',
   },
 ];
@@ -139,6 +140,31 @@ export default function HomeCategories() {
         })}
       </main>
 
+      {/* ── Latest Posts Section ── */}
+      <section className="latest-posts-section container reveal" style={{ marginTop: '80px', marginBottom: '40px' }}>
+        <div className="section-header" style={{ marginBottom: '40px', display: 'flex', alignItems: 'center', gap: '20px' }}>
+          <div style={{ 
+            width: '40px', height: '40px', 
+            borderRadius: '12px', 
+            background: 'linear-gradient(135deg, var(--accent-cyan), var(--accent-purple))',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            boxShadow: '0 8px 20px rgba(0, 212, 255, 0.2)',
+            flexShrink: 0
+          }}>
+            <span style={{ color: '#fff', fontWeight: 900, fontSize: '1.2rem' }}>⚡</span>
+          </div>
+          <h2 className="section-title" style={{ fontSize: '2rem', fontWeight: 900, letterSpacing: '-0.04em', margin: 0 }}>
+            Najnovije objave
+          </h2>
+          <div className="section-line" style={{ flex: 1, height: '1px', background: 'linear-gradient(to right, var(--border), transparent)', marginTop: '4px' }} />
+        </div>
+        
+        <PaginatedPostGrid 
+          posts={[...getAllPosts()].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())} 
+          itemsPerPage={6} 
+        />
+      </section>
+
       {/* ── Social Hub ── */}
       <section className="social-hub container reveal">
         <a 
@@ -176,6 +202,8 @@ export default function HomeCategories() {
           flex-direction: column;
           position: relative;
           padding-bottom: 40px;
+          overflow-x: hidden;
+          width: 100%;
         }
 
         .orb {
@@ -516,31 +544,89 @@ export default function HomeCategories() {
           .social-card-sub {
             font-size: 0.8rem;
           }
+          .latest-posts-section {
+            margin-top: 56px !important;
+            padding: 0 12px !important;
+          }
+          .latest-posts-section .section-header {
+            gap: 12px !important;
+            margin-bottom: 20px !important;
+          }
+          .latest-posts-section .section-header > div:first-child {
+            width: 32px !important;
+            height: 32px !important;
+            border-radius: 8px !important;
+          }
+          .latest-posts-section .section-header > div:first-child span {
+            font-size: 0.9rem !important;
+          }
+          .latest-posts-section .section-title {
+            font-size: 1.4rem !important;
+            line-height: 1 !important;
+          }
+          .section-line {
+            display: none !important;
+          }
         }
 
         @media (max-width: 580px) {
-          .bento-grid {
+          .social-hub {
             grid-template-columns: 1fr;
-            gap: 12px;
+            gap: 16px;
+            padding: 0 12px;
+          }
+          .bento-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            padding: 0 12px;
           }
           .bento-card {
-            min-height: 148px;
-            padding: 20px;
-          }
-          .bento-top {
-            align-items: center;
+            min-height: 130px;
+            padding: 14px;
+            border-radius: 16px;
           }
           .bento-emoji {
-            font-size: 2.2rem;
+            font-size: 1.6rem;
+          }
+          .bento-name {
+            font-size: 0.9rem;
+            margin-bottom: 2px;
+          }
+          .bento-tagline {
+            font-size: 0.62rem;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+          .bento-count {
+            font-size: 0.58rem;
+            padding: 2px 6px;
           }
           .bento-line {
-            left: 20px;
+            left: 14px;
+            width: 24px;
           }
-          .home-header {
-            padding-inline: 16px;
+          .bento-card.col-2 .bento-line {
+            width: 40px;
+          }
+          .latest-posts-section {
+            padding: 0 12px !important;
+            margin-top: 40px !important;
+          }
+          .section-title {
+            font-size: 1.4rem !important;
           }
           .social-card {
-            align-items: flex-start;
+            padding: 16px;
+            border-radius: 20px;
+          }
+          .social-card-label {
+            font-size: 1.1rem;
+          }
+          .social-card-sub {
+            font-size: 0.75rem;
           }
         }
 

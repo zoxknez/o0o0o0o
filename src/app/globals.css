@@ -47,6 +47,8 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -56,6 +58,7 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   overflow-x: hidden;
+  width: 100%;
 }
 
 /* ── Scrollbar ── */
@@ -134,6 +137,17 @@ body::before {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 24px;
+}
+@media (max-width: 580px) {
+  .container {
+    padding: 0 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
 }
 
 .sr-only {
@@ -447,16 +461,17 @@ body::before {
 @media (max-width: 1100px) {
   .desktop-only { display: none !important; }
   .navbar-inner {
-    justify-content: center;
+    justify-content: space-between;
     position: relative;
+    padding: 0 4px;
   }
   .navbar-brand {
-    align-items: center;
+    align-items: flex-start;
   }
   .mobile-toggle { 
     display: block; 
-    position: absolute;
-    right: 0;
+    position: relative;
+    right: auto;
   }
 }
 
@@ -727,19 +742,19 @@ body::before {
 /* ── Post Cards ── */
 .posts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
   gap: 24px;
 }
 
 .posts-grid-main {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
   gap: 24px;
 }
 
 .category-posts-grid {
   display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)) !important;
   gap: 24px !important;
 }
 
@@ -2172,5 +2187,208 @@ canvas {
 @media (max-width: 768px) {
   .post-hero, .post-header, .category-hero {
     padding-top: 120px !important;
+  }
+}
+
+/* -- PostCard Mobile Optimization -- */
+@media (max-width: 580px) {
+  .post-card-body {
+    padding: 16px !important;
+  }
+  .post-card-title {
+    font-size: 1.1rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 8px !important;
+  }
+  .post-card-excerpt {
+    font-size: 0.8rem !important;
+    margin-bottom: 12px !important;
+    -webkit-line-clamp: 2 !important;
+    line-clamp: 2 !important;
+  }
+  .post-card-image {
+    height: 140px !important;
+  }
+  .post-card-meta {
+    padding-top: 10px !important;
+    gap: 8px !important;
+  }
+}
+
+@media (max-width: 580px) {
+  .container {
+    padding: 0 12px;
+  }
+}
+
+/* -- Premium PostCard Refinements -- */
+@media (max-width: 580px) {
+  .post-card {
+    border-radius: 20px !important;
+    background: linear-gradient(180deg, var(--bg-card) 0%, rgba(13, 13, 26, 0.8) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  }
+  .post-card-title {
+    font-size: 1.15rem !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.01em !important;
+    word-break: break-word !important;
+  }
+  .post-card-excerpt {
+    opacity: 0.8 !important;
+    line-height: 1.5 !important;
+    margin-top: 4px !important;
+  }
+  .post-card-meta {
+    border-top: 1px solid rgba(255, 255, 255, 0.03) !important;
+    padding-top: 12px !important;
+  }
+  .post-card-cat-badge {
+    top: 10px !important;
+    left: 10px !important;
+    font-size: 0.6rem !important;
+    padding: 3px 8px !important;
+  }
+  .latest-posts-section .section-title {
+    font-size: 1.6rem !important;
+    background: linear-gradient(to right, #fff, var(--text-muted));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* -- Agressive Mobile Overflow Fix -- */
+@media (max-width: 580px) {
+  .latest-posts-section {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    padding: 0 12px !important;
+  }
+  .category-posts-grid {
+    display: block !important;
+    width: 100% !important;
+  }
+  .category-posts-grid > div {
+    width: 100% !important;
+    margin-bottom: 16px !important;
+  }
+  .post-card {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .section-header {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+@media (max-width: 580px) {
+  * {
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+
+  .latest-posts-section, .posts-grid, .category-posts-grid, .post-card {
+    max-width: 100% !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .post-card-title {
+    width: 100% !important;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+    hyphens: auto !important;
+  }
+  .post-card-body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+}
+
+/* -- Advanced Responsive Pagination -- */
+.pagination-controls {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 8px 16px !important;
+  border-radius: 100px !important;
+  width: fit-content !important;
+  max-width: 95vw !important;
+}
+
+.pagination-btn {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+  opacity: 0.8;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+.pagination-btn .btn-icon {
+  display: none;
+}
+
+.pagination-numbers {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.page-number {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.page-number.active {
+  background: var(--accent-cyan);
+  color: #000;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
+.page-number.dots {
+  cursor: default;
+  opacity: 0.5;
+}
+
+@media (max-width: 580px) {
+  .pagination-controls {
+    gap: 6px !important;
+    padding: 6px 12px !important;
+  }
+  .pagination-btn .btn-text {
+    display: none;
+  }
+  .pagination-btn .btn-icon {
+    display: block;
+    font-size: 1.2rem;
+  }
+  .page-number {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
   }
 }
