@@ -19,7 +19,7 @@ const categoryConfig = [
   {
     slug: 'tutorijali',
     emoji: '📚',
-    span: 'col-1',
+    span: 'col-2',
     tagline: 'Uči. Primeni. Napreduj.',
   },
   {
@@ -31,8 +31,14 @@ const categoryConfig = [
   {
     slug: 'programi',
     emoji: '⚙️',
-    span: 'col-1',
+    span: 'col-2',
     tagline: 'Alati koji rade za tebe',
+  },
+  {
+    slug: 'android',
+    emoji: '🤖',
+    span: 'col-2',
+    tagline: 'Svet u tvom džepu',
   },
   {
     slug: 'operativni-sistemi',
