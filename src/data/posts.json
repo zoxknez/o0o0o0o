@@ -1,20 +1,154 @@
 [
   {
-    "id": "49",
-    "slug": "claude-code-for-real-engineers",
-    "title": "Claude Code for Real Engineers",
-    "excerpt": "Naučite da koristite Claude Code za inženjering softvera produkcionog nivoa uz Matt Pocock-a.",
-    "content": "**Language:** English | **Duration:** 81 Lessons ( 7h 46m ) | **Size:** 7.66 GB\n**Created By: Matt Pocock** - Last updated 4/2026\n\nNaučite da koristite Claude Code za inženjering softvera produkcionog nivoa.\n\n![Claude Code for Real Engineers](https://i.postimg.cc/d3X3Td6h/1-2.jpg)\n\n### O kursu:\nDa li koristite AI alate za kodiranje? Korišćenje AI za pisanje softvera svakog dana mesecima me je naučilo mnogo. Promenilo je neka moja mišljenja i značajno unapredilo način na koji razmišljam o modernom softverskom inženjeringu.\n\nEvo dve stvari koje sam naučio:\n1. AI može biti i preterano hvaljen i moćan. Izuzetno je koristan kada se njime pravilno rukuje.\n2. AI je poziv za programere da prodube i unaprede svoje fundamentalne veštine: inženjering.\n\nAI kodiranje može pomoći da proizvedete kod brže i bolje... ali i kod koji je potencijalno mnogo opasniji (tehnički dug, protraćeno vreme i energija). Alat kao što je Claude Code može biti vaš najbolji prijatelj ili najgori saigrač kojeg ste ikada imali. Sve je u tome kako ga koristite.\n\n### Download Links:\n\n**MEGA**\n- [Part 1](https://mega.nz/file/ouQhAQzZ#Mh75XB5stK_f24T3HGRLMs3bRjuJhtzG-apdHwK4juo)\n- [Part 2](https://mega.nz/file/kvwlUR5Z#FecM2M7jEhXfAnkIhAJ3Cz_fMC5BhtAmCZrEWcSy_qc)\n- [Part 3](https://mega.nz/file/prx0VKIC#RecRD1b-Mr20VTu_nbazIgG1f-CCLkKhWW3NnmPavyg)\n- [Part 4](https://mega.nz/file/AvBTxaAD#pwPJqlRmYkgeJRZ1RqUox3VKsFrT2MD98u2dHnAs9Tw)\n- [Part 5](https://mega.nz/file/luAFQSxY#DyfxqvHt9zLLf9E_gFeEUiW1dT-3h01wlGC9JUEgVVw)\n- [Part 6](https://mega.nz/file/AqpTEaKC#Gt9KLykJSt242stt9mekUH9aA7dBtZ49q1C3Xiw_l4I)\n- [Part 7](https://mega.nz/file/p3IE2SyK#Th6of_wjSvDSAgG_hpkuxl8f6g4fQfQTVZ-jyebwHRQ)\n- [Part 8](https://mega.nz/file/5qwDHZoD#v2M1789s6yHdMrSvZIwdq9v3MOcornt7MzYp3AnH75Y)\n\n**MEDIAFIRE**\n- [Part 1](http://www.mediafire.com/?jbbyc2nxocwolzc)\n- [Part 2](http://www.mediafire.com/?hmbhqhu8mazjxnn)\n- [Part 3](http://www.mediafire.com/?s5fi9qsolx6apy4)\n- [Part 4](http://www.mediafire.com/?z5ecixpgybc3qd6)\n- [Part 5](http://www.mediafire.com/?x6lazmkbwzgfwyf)\n- [Part 6](http://www.mediafire.com/?xj3k5bqnn2smw7e)\n- [Part 7](http://www.mediafire.com/?uenhzihu6yvg98f)\n- [Part 8](http://www.mediafire.com/?btxce5dtikooopu)",
-    "category": "tutorijali",
+    "id": "57",
+    "slug": "powershell-komande-za-popravku-windowsa",
+    "title": "PowerShell komande koje rešavaju Windows 11 probleme",
+    "excerpt": "Vodič kroz najkorisnije PowerShell komande za dijagnostiku i popravku mreže, sistemskih fajlova i optimizaciju diska.",
+    "content": "PowerShell nije samo alat za programere; to je jedan od najbržih načina da se dijagnostikuju i poprave česti problemi na Windows 10 i Windows 11 sistemima. Od mrežnih prekida i DNS grešaka do oštećenih sistemskih datoteka i prepunih diskova, ove komande pružaju direktno rešenje bez potrebe za kompleksnim grafičkim interfejsima.\n\n![PowerShell Windows Repair](/images/powershell-repair.png)\n\n### Važna napomena pre početka\nNisu sve komande u ovom vodiču „čiste“ PowerShell komande. Neke su klasični Windows alati koji se pokreću iz konzole, kao što su `ipconfig`, `chkdsk` ili `sfc`. Pre bilo kakvih ozbiljnijih intervencija, PowerShell treba pokrenuti kao administrator (Start meni > desni klik na PowerShell > Run as administrator).\n\nPreporučuje se kreiranje tačke vraćanja sistema (Restore Point) pre menjanja važnih postavki:\n\n```powershell\nEnable-ComputerRestore -Drive \"C:\\\"\nCheckpoint-Computer -Description \"Pre popravke sistema\" -RestorePointType MODIFY_SETTINGS\n```\n\n---\n\n### 1. Prikupljanje sistemskih informacija\nPre početka popravke, neophodno je znati tačno stanje sistema, build verziju i zdravlje volumena:\n\n```powershell\nGet-ComputerInfo | Select-Object WindowsProductName, WindowsVersion, OsBuildNumber, OsArchitecture\nGet-Volume | Sort-Object DriveLetter | Format-Table DriveLetter, FileSystemLabel, HealthStatus, SizeRemaining, Size\n```\n\n### 2. Ažuriranje aplikacija preko winget-a\nZastarele aplikacije često uzrokuju nestabilnost. `winget` (Windows Package Manager) omogućava brzo ažuriranje svega instaliranog:\n\n```powershell\nwinget upgrade --all\n```\n\n### 3. Dijagnostika i popravka mreže\nAko je internet konekcija nestabilna ili DNS pravi probleme, sledeći niz komandi može pomoći u identifikaciji i osvežavanju parametara:\n\n```powershell\n# Provera konfiguracije i DNS-a\nipconfig /all\nResolve-DnsName google.com\n\n# Oslobađanje i obnova IP adrese\nipconfig /release\nipconfig /renew\nipconfig /flushdns\n```\n\nU slučajevima kada browser prijavljuje greške a konekcija formalno postoji, resetovanje TCP/IP stack-a je često rešenje:\n\n```powershell\nnetsh winsock reset\nnetsh int ip reset\n```\n\n### 4. Integritet sistema: DISM i SFC\nMnogi korisnici prvo pokreću SFC, ali ispravan redosled podrazumeva prvo DISM koji popravlja samu sliku (image) Windowsa, a potom SFC koji popravlja konkretne fajlove:\n\n```powershell\nDISM.exe /Online /Cleanup-Image /RestoreHealth\nsfc /scannow\n```\n\n### 5. Zdravlje i optimizacija diska\nZa proveru logičkih i fizičkih grešaka na disku, koristi se provereni `chkdsk`, dok se za optimizaciju (TRIM za SSD ili defrag za HDD) koristi `Optimize-Volume`:\n\n```powershell\n# Provera diska\nchkdsk C: /scan\n\n# Optimizacija SSD-a\nOptimize-Volume -DriveLetter C -ReTrim -Verbose\n```\n\n### 6. Analiza prostora i čišćenje\nKada se disk C: misteriozno napuni, PowerShell može brzo locirati najveće foldere, posebno u `AppData` folderu gde se često kriju ogromni keš fajlovi:\n\n```powershell\n$Path = \"$env:LOCALAPPDATA\"\nGet-ChildItem $Path -Directory -Force -ErrorAction SilentlyContinue | ForEach-Object {\n    $Size = (Get-ChildItem $_.FullName -Recurse -File -Force -ErrorAction SilentlyContinue | Measure-Object -Property Length -Sum).Sum\n    [PSCustomObject]@{ Folder = $_.FullName; SizeGB = [math]::Round($Size / 1GB, 2) }\n} | Sort-Object SizeGB -Descending | Select-Object -First 20\n```\n\n### Zaključak\nPowerShell je izuzetno moćan alat koji štedi vreme, ali zahteva pažljivo rukovanje. Najbolja praksa podrazumeva postepeni pristup: od dijagnostike i blagih popravki, preko DISM/SFC alata, pa sve do dubinskih provera diska. Uvek je pametno imati spreman backup ili restore point pre bilo kakvih korenitih promena na sistemu.",
+    "category": "saveti",
     "author": "Uredništvo",
-    "date": "2026-04-27",
+    "date": "2026-05-06",
     "readTime": "8 min",
     "featured": true,
     "tags": [
-      "claude-code",
-      "ai-coding",
-      "engineering",
-      "matt-pocock",
+      "powershell",
+      "windows",
+      "repair",
+      "saveti",
+      "tutorijal",
+      "microsoft"
+    ]
+  },
+  {
+    "id": "56",
+    "slug": "python-course-kids-coding",
+    "title": "[Udemy] In Python Course - Kids Coding",
+    "excerpt": "Pogodno za početnike od 11 godina! Naučite Python 3 na zabavan način uz animirane likove i robote (Edison i Micro:bit).",
+    "content": "**MP4 | Video:** h264, 1920x1080 | **Audio:** AAC, 44.1 KHz\n**Language:** English | **Size:** 1.14 GB | **Duration:** 2h 06m\n\nPogodno za početnike od 11 godina! Dobijte pomoć od smešnih animiranih crtanih filmova i robota (Edison i Micro:bit).\n\n![Python Course - Kids Coding](https://lookimg.com/images/2023/01/25/Q8DIdz.jpg)\n\n### Šta ćete naučiti:\n- Naučite kako da koristite Python 3 na pravi način.\n- Kreirajte sopstvene osnovne programe u Python-u.\n- Ispravno izvršavajte operacije u Python-u.\n- Razumite programerske strukture.\n- Naučite o strukturama petlji i kondicionalima.\n- Negujte kompjutersko razmišljanje.\n- Razvijte veštine rešavanja problema.\n- Razvijte kritičko razmišljanje.\n- Razumite tehnologiju.\n- Shvatite da je učenje iz grešaka od vitalnog značaja.\n- Razvijte veštine učenja kroz rad.\n- Proširite svoju kreativnost.\n- Shvatite da se upornost nagrađuje.\n\n### Zahtevi:\n- Morate biti sposobni da koristite računar na osnovnom nivou.\n- Par slušalica bi mogao biti od pomoći.\n\n### Kome je ovaj kurs namenjen:\n- Deca ili tinejdžeri uzrasta od 11 do 18 godina mogu pohađati ovaj kurs pod nadzorom staratelja ili nastavnika.\n- Nastavnici. Idealno za kombinovano učenje.\n- Roditelji ili staratelji koji kupuju kurs za decu.\n- Odrasli koji žele da razumeju osnove Python-a.\n\n### Download Links:\n- [FreeDL](https://frdl.io/jh6kfm19fpzt)\n- [UsersDrive](https://usersdrive.com/ul82v60nvjrx.html)\n- [ClicknUpload](https://clicknupload.click/wzb26o8quqjz)",
+    "category": "tutorijali",
+    "author": "Uredništvo",
+    "date": "2026-05-06",
+    "readTime": "4 min",
+    "featured": false,
+    "tags": [
+      "python",
+      "kids",
+      "coding",
+      "udemy",
+      "tutorijal"
+    ]
+  },
+  {
+    "id": "55",
+    "slug": "windows-server-administrator-bootcamp",
+    "title": "Become a Job-Ready Windows Server Administrator from Scratch",
+    "excerpt": "Intenzivni 6-nedeljni bootcamp za savladavanje Windows Servera 2025, Active Directory, mrežnih usluga, bezbednosti i hibridnog oblaka.",
+    "content": "**Language:** English | **Duration:** 4h 38m | **Size:** 4.56 GB\n**Created by Fabrice Chrzanowski** - Published 4/2026\n\nPostanite spreman za posao Windows Server Administrator od nule.\n\n![Windows Server Administrator](https://i.postimg.cc/C1Mpc3k4/1-1.jpg)\n\n### Šta ćete naučiti:\n- Instalirajte, konfigurišite i upravljajte Windows Serverom 2025.\n- Implementirajte i administrirajte Active Directory, DNS, DHCP, GPO i fajl servise.\n- Osigurajte i napravite rezervne kopije servera prateći Microsoft bezbednosne smernice.\n- Automatizujte administrativne zadatke koristeći PowerShell skripte.\n- Izgradite hibridna okruženja sa Azure AD i Microsoft 365 integracijom.\n- Koristite vSphere virtuelizaciju za infrastrukturu preduzeća.\n- Budite spremni za posao kao Windows Server Administrator ili Hybrid Cloud Engineer.\n\n### Opis kursa:\nOvaj intenzivni bootcamp je dizajniran da transformiše studente u administratore Windows Servera spremne za rad. Kroz mešavinu teorije, vođenih laboratorija i projekata iz stvarnog sveta, učesnici će savladati osnove Windows Servera, virtuelizaciju, mrežne usluge i hibridnu integraciju u oblaku.\n\n### Moduli kursa:\n- **Week 1:** Osnove i virtuelizacija (vSphere & Hyper-V).\n- **Week 2:** Active Directory i identitet.\n- **Week 3:** Mrežne usluge (DNS, DHCP, VPN).\n- **Week 4:** Fajl, skladištenje i bezbednost.\n- **Week 5:** PowerShell, Cloud i hibrid.\n- **Week 6:** Microsoft 365 i spremnost za posao.\n\n### Download Links:\n\n**MEGA**\n- [Preuzmi Folder](https://mega.nz/folder/d7MUyRqR#PD_aNjGL0C2osYEukIBMAg)\n\n**MEDIAFIRE**\n- [Part 1](http://www.mediafire.com/?k5sxq8wras9qu6i)\n- [Part 2](http://www.mediafire.com/?ekpvzqdu9qt6t1h)\n- [Part 3](http://www.mediafire.com/?jqbocax0zwnpb8g)\n- [Part 4](http://www.mediafire.com/?t9hzaokbm816wo1)\n- [Part 5](http://www.mediafire.com/?abtgmmew4kolmov)",
+    "category": "tutorijali",
+    "author": "Uredništvo",
+    "date": "2026-05-06",
+    "readTime": "8 min",
+    "featured": true,
+    "tags": [
+      "windows-server",
+      "active-directory",
+      "powershell",
+      "azure",
+      "tutorijal"
+    ]
+  },
+  {
+    "id": "54",
+    "slug": "blender-batman-vfx-workflow",
+    "title": "Complete workflow for CG and VFX inside Blender Batman scene",
+    "excerpt": "Naučite kako da kreirate kinematografsku scenu Betmena u Blenderu, kombinujući žive snimke sa CGI elementima i Geo Nodes.",
+    "content": "**Language:** English | **Size:** 2.47 GB | **Duration:** 6h 0m\n**Created By: Sime Bugarija** - Last updated 11/2025\n\nKompletan tok rada za CG i VFX unutar Blender Batman scene.\n\n![Blender Batman Scene](https://i.postimg.cc/6QHm1PTw/1.jpg)\n\n### Šta ćete naučiti:\n- Uvod u Blender (besplatan softver).\n- Kreiranje kinematografske scene Betmena iz uvoda.\n- Kako mešati žive snimke sa CG elementima.\n- Kreiranje jednostavnog, ali funkcionalnog \"City generatora\" u Geo Nodes.\n- Besplatno deljenje \"Simple city generatora\".\n\n### O tutorijalu:\nU ovom tutorijalu kreiramo animaciju Betmena inspirisanu filmom *The Batman (2022)*. Koristimo mali deo filma kao referencu za osvetljenje i gradaciju boja, gradeći celu scenu oko toga (90% scene je CGI na kraju). Ovo je delom VFX tutorijal jer pokušavamo da uklopimo stvarne snimke sa CG elementima.\n\n### Paket sadrži:\n- Korak-po-korak tutorijal.\n- Sve resurse i .blend fajl.\n- **Simple City Generator:** Geo Node setup sa 11 klizača za brzu kreaciju grada u pozadini.\n\n### Download Links:\n\n**MEGA**\n- [Preuzmi Folder](https://mega.nz/folder/mCgnSQKY#2bgp7nmVOnLVXeQ9giuxLQ)\n\n**MEDIAFIRE**\n- [Part 1](http://www.mediafire.com/?ik3e6ad7dlwuamc)\n- [Part 2](http://www.mediafire.com/?dradhjs9zwb51q8)\n- [Part 3](http://www.mediafire.com/?mfmt3xklbyf46pf)",
+    "category": "tutorijali",
+    "author": "Uredništvo",
+    "date": "2026-05-06",
+    "readTime": "10 min",
+    "featured": true,
+    "tags": [
+      "blender",
+      "vfx",
+      "3d",
+      "batman",
+      "city-generator"
+    ]
+  },
+  {
+    "id": "53",
+    "slug": "power-bi-data-analytics-bootcamp",
+    "title": "[Udemy] Power BI: Data Analytics with Power BI Bootcamp",
+    "excerpt": "Duboko uronite u Power BI sa vizuelizacijom, pripremom podataka, ETL-om, modelovanjem i DAX-om.",
+    "content": "**MP4 | Video:** h264, 1280x720 | **Audio:** AAC, 44.1 KHz, 2 Ch\n**Genre:** eLearning | **Language:** English | **Duration:** 171 Lectures ( 12h 39m ) | **Size:** 5.95 GB\n\nNaučite Power BI od nule do naprednog nivoa.\n\n![Power BI Bootcamp](https://lookimg.com/images/2025/05/02/ZQZBGg.jpeg)\n\n### Šta ćete naučiti:\n- Izgradite Power BI izveštaj i Dashboard od nule.\n- Koristite koncepte kursa da izgradite svoj lični portfolio projekat vizuelizacije podataka.\n- Kreirajte visoko interaktivne i atraktivne izveštaje.\n- Objavite izveštaj na mreži i generišite link za deljenje.\n- Savladajte Power Query za pripremu i čišćenje podataka.\n- Razumite modelovanje podataka i DAX formule.\n- Dizajnirajte izveštaje kompatibilne za mobilne uređaje.\n\n### Download Links:\n\n**FilesPayOut**\n- [Part 1](https://filespayouts.com/gnj5iq1rbd8j)\n- [Part 2](https://filespayouts.com/mp7ckplbd8v9)\n- [Part 3](https://filespayouts.com/b15km62y7mvj)\n- [Part 4](https://filespayouts.com/9q8au9cznfmt)\n\n**UsersDrive**\n- [Part 1](https://usersdrive.com/ccencu9dhgut.html)\n- [Part 2](https://usersdrive.com/lqurmac9zncx.html)\n- [Part 3](https://usersdrive.com/1qfjmcqlww89.html)\n- [Part 4](https://usersdrive.com/czq6jb3t98os.html)\n\n**ClicknUpload**\n- [Part 1](https://clicknupload.cfd/yqvzr6vfdk4h)\n- [Part 2](https://clicknupload.cfd/9kdi5liuy0hi)\n- [Part 3](https://clicknupload.cfd/2gyk0d1s764t)\n- [Part 4](https://clicknupload.cfd/ogn1t0tfubzs)",
+    "category": "tutorijali",
+    "author": "Uredništvo",
+    "date": "2026-05-06",
+    "readTime": "12 min",
+    "featured": false,
+    "tags": [
+      "power-bi",
+      "data-analytics",
+      "dax",
+      "visualization",
+      "udemy"
+    ]
+  },
+  {
+    "id": "52",
+    "slug": "autodesk-fusion-360-beginners-guide",
+    "title": "[Udemy] Autodesk Fusion 360 (Year 2025) Complete Beginners Guide",
+    "excerpt": "Vodič za početnike do srednjeg nivoa za 3D mehanički dizajn koristeći Autodesk Fusion 360 (verzija 2025).",
+    "content": "**MP4 | Video:** h264, 1920x1080 | **Audio:** AAC, 44.1 KHz\n**Language:** English | **Duration:** 92 lectures (10h 22m) | **Size:** 5.49 GB\n\nSveobuhvatan vodič za 3D mehanički dizajn.\n\n![Autodesk Fusion 360](https://lookimg.com/images/2025/05/04/ZQKKEt.jpeg)\n\n### Šta ćete naučiti:\n- **Skečiranje:** Naučite Sketch alate za kreiranje detaljne geometrije.\n- **3D modelovanje:** Pretvorite skečeve u 3D modele koristeći širok spektar alata.\n- **2D inženjerski crteži:** Kreirajte tehničke nacrte sklopova i delova.\n- **Izmene i modifikacije:** Osnovne prakse za dizajn prema visokim standardima.\n- **3D vizuelizacija:** Renderovanje, materijali i izgled.\n\n### Download Links:\n\n**FreeDL**\n- [Part 1](https://frdl.io/9qjpdnh6asz1)\n- [Part 2](https://frdl.io/t036pto49r3s)\n- [Part 3](https://frdl.io/rf3jtt1z4ad2)\n\n**FilesPayOut**\n- [Part 1](https://filespayouts.com/d/4x9L)\n- [Part 2](https://filespayouts.com/d/4x9O)\n- [Part 3](https://filespayouts.com/d/4x9R)\n\n**UsersDrive**\n- [Part 1](https://usersdrive.com/nnm2bwkcim5f.html)\n- [Part 2](https://usersdrive.com/t74tdsrcjyo3.html)\n- [Part 3](https://usersdrive.com/b5hsnmzdb17q.html)\n\n**ClicknUpload**\n- [Part 1](https://clicknupload.cfd/op6unhc7tffv)\n- [Part 2](https://clicknupload.cfd/wrmi1ul1u86s)\n- [Part 3](https://clicknupload.cfd/8fdweatsnl3l)",
+    "category": "tutorijali",
+    "author": "Uredništvo",
+    "date": "2026-05-06",
+    "readTime": "10 min",
+    "featured": false,
+    "tags": [
+      "fusion-360",
+      "cad",
+      "3d-design",
+      "mechanical-design",
+      "udemy"
+    ]
+  },
+  {
+    "id": "51",
+    "slug": "ai-driven-cybersecurity-automation",
+    "title": "[Udemy] AI-Driven Cybersecurity Automation",
+    "excerpt": "Izgradite autonomne, bezbedne AI sisteme za odbranu oblaka, mreža i preduzeća.",
+    "content": "**MP4 | Video:** h264, 1920x1080 | **Audio:** AAC, 44.1 KHz, 2 Ch\n**Genre:** eLearning | **Language:** English | **Duration:** 75 Lectures ( 8h 31m ) | **Size:** 5 GB\n\nAutomatizacija sajber bezbednosti vođena veštačkom inteligencijom.\n\n![AI-Driven Cybersecurity Automation](https://lookimg.com/images/2026/02/11/3rgJu.jpg)\n\n### Šta ćete naučiti:\n- Dizajnirajte i implementirajte AI automatizaciju za oblak, mreže i identitete.\n- Izgradite autonomne tokove rada za otkrivanje pretnji i odgovor.\n- Branite same AI sisteme od napada (poisoning, evasion, abuse).\n- Primenite sisteme sa ljudskim nadzorom (human-in-the-loop) i prekidačima (kill switches).\n- Monitorišite, revidirajte i objasnite AI odluke u bezbednosnim sistemima.\n- Dizajnirajte otporne, enterprise-grade AI bezbednosne arhitekture.\n\n### Download Links:\n\n**FreeDL**\n- [Part 1](https://frdl.io/kumz1b26d0xw)\n- [Part 2](https://frdl.io/ytm7f09ft3gjZ)\n- [Part 3](https://frdl.io/e7zny5kv6x75)\n\n**UsersDrive**\n- [Part 1](https://usersdrive.com/m1yoyga4lgbl.html)\n- [Part 2](https://usersdrive.com/t1s04x1s1g61.html)\n- [Part 3](https://usersdrive.com/v4648h7rfzig.html)\n\n**ClicknUpload**\n- [Part 1](https://clicknupload.click/ye7sox8lx22y)\n- [Part 2](https://clicknupload.click/52k1iwz5d4o4)\n- [Part 3](https://clicknupload.click/fx0vs1cyveeo)",
+    "category": "tutorijali",
+    "author": "Uredništvo",
+    "date": "2026-05-06",
+    "readTime": "8 min",
+    "featured": true,
+    "tags": [
+      "cybersecurity",
+      "ai",
+      "automation",
+      "cloud-security",
+      "udemy"
+    ]
+  },
+  {
+    "id": "50",
+    "slug": "financial-modeling-valuation-excel",
+    "title": "Financial Modeling & Valuation in Excel - Complete Course",
+    "excerpt": "Kompletan paket Excel-a, računovodstva, analize racija, finansijskog modelovanja, predviđanja i tehnika vrednovanja poslovanja.",
+    "content": "**Language:** English | **Duration:** 33h 34m | **Size:** 21.17 GB\n**Last updated 7/2023 - Created by: EDUCBA Bridging the Gap**\n\nOvladajte finansijskim modelovanjem i vrednovanjem u Excelu.\n\n![Financial Modeling & Valuation](https://i.postimg.cc/yxsH6wDw/1.jpg)\n\n### Šta ćete naučiti:\n- **Master Excel veštine:** Od osnovnih funkcija do naprednih Pivot tabela za finansijsko modelovanje.\n- **Računovodstvena osnova:** Razumite finansijske izveštaje, bilanse uspeha i bilanse stanja.\n- **Sveobuhvatna analiza novčanih tokova:** Naučite direktne i indirektne metode (CFO, CFI, CFF).\n- **Korporativno vrednovanje:** Modeli diskontovanja dividendi, prognoziranje i izračunavanje vrednosti preduzeća.\n- **Praktično modelovanje:** Primenite veštine na model kompanije Apple Inc., pokrivajući prognozu prihoda, DCF i osetljivost.\n\n### Opis kursa:\nOvaj program pruža potpunu stručnost u finansijskom modelovanju, integrišući Microsoft Excel, osnove računovodstva i analizu finansijskih izveštaja u jedno strukturirano putovanje. Dizajniran za buduće finansijske analitičare, investicione bankare i preduzetnike.\n\n### Download Links:\n\n**MEGA**\n- [Part 1](https://mega.nz/folder/P7o0wYDb#lzmVHHLydX4jBVUxyFogDg)\n- [Part 2](https://mega.nz/folder/pvBjkbhT#R_ZEtvlFOmqBYzYaxb6bDQ)\n\n**MEDIAFIRE**\n- [Part 1](http://www.mediafire.com/?ifp4urr9cs5l4fm)\n- [Part 2](http://www.mediafire.com/?h3g39qfr5j0bpyz)\n- [Part 3](http://www.mediafire.com/?o2p7ofc499oxfky)\n- [Part 4](http://www.mediafire.com/?xm2g1dzc6x51ayn)\n- [Part 5](http://www.mediafire.com/?xhsidlnbob6zw6s)\n- [Part 6](http://www.mediafire.com/?x2bpqjnyvb1p57h)\n- [Part 7](http://www.mediafire.com/?a8jowlaofju6zf4)\n- [Part 8](http://www.mediafire.com/?vk9fuk5se4j1wzn)\n- [Part 9](http://www.mediafire.com/?utndypi0enqdltj)\n- [Part 10](http://www.mediafire.com/?swlrrpsbxvzrn38)\n- [Part 11](http://www.mediafire.com/?pfuhofrceqvskk0)",
+    "category": "tutorijali",
+    "author": "Uredništvo",
+    "date": "2026-05-06",
+    "readTime": "30 min",
+    "featured": true,
+    "tags": [
+      "excel",
+      "financial-modeling",
+      "valuation",
+      "accounting",
       "tutorijal"
     ]
   },
@@ -228,7 +362,14 @@
     "date": "2026-04-25",
     "readTime": "6 min",
     "featured": true,
-    "tags": ["android", "sygic", "navigacija", "mape", "premium", "gps"]
+    "tags": [
+      "android",
+      "sygic",
+      "navigacija",
+      "mape",
+      "premium",
+      "gps"
+    ]
   },
   {
     "id": "37",
@@ -241,7 +382,14 @@
     "date": "2026-04-25",
     "readTime": "3 min",
     "featured": false,
-    "tags": ["android", "spotify", "muzika", "downloader", "mp3", "besplatno"]
+    "tags": [
+      "android",
+      "spotify",
+      "muzika",
+      "downloader",
+      "mp3",
+      "besplatno"
+    ]
   },
   {
     "id": "36",
@@ -254,7 +402,14 @@
     "date": "2026-04-25",
     "readTime": "4 min",
     "featured": true,
-    "tags": ["computeractive", "magazine", "pdf", "pc", "gadgets", "vesti"]
+    "tags": [
+      "computeractive",
+      "magazine",
+      "pdf",
+      "pc",
+      "gadgets",
+      "vesti"
+    ]
   },
   {
     "id": "35",
@@ -267,7 +422,14 @@
     "date": "2026-04-25",
     "readTime": "5 min",
     "featured": true,
-    "tags": ["cisco", "networking", "dummies", "pdf", "knjiga", "edukacija"]
+    "tags": [
+      "cisco",
+      "networking",
+      "dummies",
+      "pdf",
+      "knjiga",
+      "edukacija"
+    ]
   },
   {
     "id": "34",
@@ -280,7 +442,13 @@
     "date": "2026-04-23",
     "readTime": "3 min",
     "featured": true,
-    "tags": ["office", "microsoft", "365", "programi", "instalacija"]
+    "tags": [
+      "office",
+      "microsoft",
+      "365",
+      "programi",
+      "instalacija"
+    ]
   },
   {
     "id": "33",
@@ -293,7 +461,13 @@
     "date": "2026-04-23",
     "readTime": "2 min",
     "featured": true,
-    "tags": ["zorin", "os", "linux", "operativni-sistemi", "premium"]
+    "tags": [
+      "zorin",
+      "os",
+      "linux",
+      "operativni-sistemi",
+      "premium"
+    ]
   },
   {
     "id": "32",
@@ -306,7 +480,13 @@
     "date": "2026-04-23",
     "readTime": "3 min",
     "featured": true,
-    "tags": ["android", "scribd", "dokumenti", "premium", "unlocked"]
+    "tags": [
+      "android",
+      "scribd",
+      "dokumenti",
+      "premium",
+      "unlocked"
+    ]
   },
   {
     "id": "31",
@@ -319,7 +499,13 @@
     "date": "2026-04-23",
     "readTime": "4 min",
     "featured": false,
-    "tags": ["android", "konvertor", "alati", "mod", "premium"]
+    "tags": [
+      "android",
+      "konvertor",
+      "alati",
+      "mod",
+      "premium"
+    ]
   },
   {
     "id": "30",
@@ -332,7 +518,13 @@
     "date": "2026-04-23",
     "readTime": "3 min",
     "featured": false,
-    "tags": ["android", "linux", "komande", "terminal", "mod"]
+    "tags": [
+      "android",
+      "linux",
+      "komande",
+      "terminal",
+      "mod"
+    ]
   },
   {
     "id": "29",
@@ -345,7 +537,13 @@
     "date": "2026-04-23",
     "readTime": "4 min",
     "featured": false,
-    "tags": ["android", "vulkani", "zemljotresi", "mod", "premium"]
+    "tags": [
+      "android",
+      "vulkani",
+      "zemljotresi",
+      "mod",
+      "premium"
+    ]
   },
   {
     "id": "21",
@@ -358,7 +556,14 @@
     "date": "2026-04-14",
     "readTime": "4 min",
     "featured": false,
-    "tags": ["python", "programiranje", "edukacija", "pdf", "knjiga", "ilustrovano"]
+    "tags": [
+      "python",
+      "programiranje",
+      "edukacija",
+      "pdf",
+      "knjiga",
+      "ilustrovano"
+    ]
   },
   {
     "id": "20",
@@ -371,7 +576,14 @@
     "date": "2026-04-14",
     "readTime": "5 min",
     "featured": true,
-    "tags": ["photoshop", "adobe", "dizajn", "tutorijal", "pdf", "knjiga"]
+    "tags": [
+      "photoshop",
+      "adobe",
+      "dizajn",
+      "tutorijal",
+      "pdf",
+      "knjiga"
+    ]
   },
   {
     "id": "19",
@@ -384,7 +596,13 @@
     "date": "2026-04-14",
     "readTime": "1 min",
     "featured": false,
-    "tags": ["casopis", "apc", "it", "tehnologija", "pdf"]
+    "tags": [
+      "casopis",
+      "apc",
+      "it",
+      "tehnologija",
+      "pdf"
+    ]
   },
   {
     "id": "18",
@@ -397,7 +615,13 @@
     "date": "2026-04-14",
     "readTime": "4 min",
     "featured": false,
-    "tags": ["knjiga", "matematika", "edukacija", "mobi", "ebook"]
+    "tags": [
+      "knjiga",
+      "matematika",
+      "edukacija",
+      "mobi",
+      "ebook"
+    ]
   },
   {
     "id": "17",
@@ -410,7 +634,13 @@
     "date": "2026-04-14",
     "readTime": "4 min",
     "featured": true,
-    "tags": ["android", "elektronika", "alati", "mod", "premium"]
+    "tags": [
+      "android",
+      "elektronika",
+      "alati",
+      "mod",
+      "premium"
+    ]
   },
   {
     "id": "16",
@@ -423,7 +653,13 @@
     "date": "2026-04-14",
     "readTime": "3 min",
     "featured": false,
-    "tags": ["android", "market", "aplikacije", "prodavnica", "besplatno"]
+    "tags": [
+      "android",
+      "market",
+      "aplikacije",
+      "prodavnica",
+      "besplatno"
+    ]
   },
   {
     "id": "28",
