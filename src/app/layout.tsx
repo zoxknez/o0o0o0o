@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://o0o0o0o.com'),
   title: {
     default: 'o0o0o0o - IT Blog',
     template: '%s | o0o0o0o',

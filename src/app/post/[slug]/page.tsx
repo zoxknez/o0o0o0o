@@ -26,18 +26,48 @@ export async function generateMetadata(
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return { title: 'Nije pronađeno' };
+
+  // Extract first image from markdown or fallback
+  const imgMatch = post.content.match(/!\[.*?\]\((.*?)\)/);
+  let postImage = imgMatch ? imgMatch[1] : '/images/ai-chat.jpg';
+  if (postImage.endsWith('.svg')) {
+    const pngAlternative = postImage.replace(/\.svg$/, '.png');
+    postImage = pngAlternative;
+  }
+
   return {
     title: {
       absolute: `${post.title} - o0o0o0o`
     },
     description: post.excerpt,
     keywords: post.tags,
+    authors: [{ name: post.author }],
+    creator: post.author,
+    alternates: {
+      canonical: `/post/${post.slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,
       type: 'article',
+      url: `/post/${post.slug}`,
       publishedTime: post.date,
+      authors: [post.author],
+      images: [
+        {
+          url: postImage,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        }
+      ]
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: [postImage],
+    }
   };
 }
 
