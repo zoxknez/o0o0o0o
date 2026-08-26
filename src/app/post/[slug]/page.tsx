@@ -159,49 +159,6 @@ export default async function PostPage(
               content={post.content}
               accentColor={cat?.color || 'var(--accent-cyan)'}
             />
-            
-            <div className="glass-prism post-insight" style={{ background: cat ? `${cat.color}05` : 'rgba(255,255,255,0.02)', marginTop: 60 }}>
-              <div 
-                className="post-insight-label"
-                style={{ 
-                  background: cat?.color || 'var(--accent-cyan)', 
-                  color: '#000', 
-                  boxShadow: `0 10px 20px ${cat?.color || 'var(--accent-cyan)'}40`
-                }}
-              >
-                INSIGHT
-              </div>
-              <h2 className="post-insight-title">O čemu se radi?</h2>
-              <p className="reveal-on-scroll">
-                Ova objava pripada kategoriji <strong>{cat?.name}</strong> i pokriva sve ključne aspekte teme.
-                Svaka sekcija je pažljivo pripremljena kako bi vam pružila jasne informacije i korisne savete.
-              </p>
-              <p className="reveal-on-scroll" style={{ marginBottom: 0 }}>
-                Pratite <strong>o0o0o0o blog</strong> za redovna ažuriranja, tutorijale i najnovije vesti iz sveta IT tehnologije.
-                Naš tim je posvećen pružanju tačnih i korisnih informacija na srpskom jeziku.
-              </p>
-            </div>
-
-            <h2 className="reveal-on-scroll">Zaključak</h2>
-            <p className="reveal-on-scroll">
-              Nadam se da vam je ovaj članak bio od pomoći. Slobodno ostavite komentar ili podelite ovaj sadržaj
-              sa prijateljima koji bi mogli imati koristi od ovih informacija.
-            </p>
-            <p className="reveal-on-scroll">
-              Za više sličnih sadržaja, posetite 
-              {cat && (
-                <Link href={`/${post.category}`} style={{ 
-                  color: cat.color, 
-                  textDecoration: 'none', 
-                  margin: '0 8px', 
-                  fontWeight: 700,
-                  borderBottom: `2px solid ${cat.color}30`
-                }}>
-                  {cat.name}
-                </Link>
-              )}
-              kategoriju.
-            </p>
           </div>
 
           {/* Back button */}
