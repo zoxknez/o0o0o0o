@@ -196,7 +196,7 @@ export default function HomeCategories() {
           display: flex;
           flex-direction: column;
           position: relative;
-          padding-top: clamp(24px, 4vw, 48px);
+          padding-top: clamp(96px, 10vw, 120px);
           padding-bottom: 40px;
           overflow-x: hidden;
           width: 100%;
