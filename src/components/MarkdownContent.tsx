@@ -16,7 +16,7 @@ export default function MarkdownContent({ content, accentColor = 'var(--accent-c
         components={{
           // External links: open in new tab + show URL
           a(props) {
-            const { href, children, ...rest } = props;
+            const { href, children, node, ...rest } = props as typeof props & { node?: unknown };
             const isExternal = href?.startsWith('http');
             return (
               <a
@@ -45,7 +45,7 @@ export default function MarkdownContent({ content, accentColor = 'var(--accent-c
           },
           // Images: styled with rounded corners and centered layout
           img(props) {
-            const { src, alt } = props;
+            const { src, alt, node, ...rest } = props as typeof props & { node?: unknown };
             return (
               <span
                 style={{
@@ -58,6 +58,7 @@ export default function MarkdownContent({ content, accentColor = 'var(--accent-c
                 <img
                   src={src}
                   alt={alt || ''}
+                  {...rest}
                   style={{
                     maxWidth: '100%',
                     borderRadius: '12px',
@@ -83,16 +84,19 @@ export default function MarkdownContent({ content, accentColor = 'var(--accent-c
           },
           // Bold highlight with accent color
           strong(props) {
+            const { children, node, ...rest } = props as typeof props & { node?: unknown };
             return (
-              <strong style={{ color: accentColor, fontWeight: 700 }}>
-                {props.children}
+              <strong style={{ color: accentColor, fontWeight: 700 }} {...rest}>
+                {children}
               </strong>
             );
           },
           // Blockquotes: styled as premium callout boxes
           blockquote(props) {
+            const { children, node, ...rest } = props as typeof props & { node?: unknown };
             return (
               <blockquote
+                {...rest}
                 style={{
                   borderLeft: `4px solid ${accentColor}`,
                   background: `${accentColor}08`,
@@ -103,16 +107,17 @@ export default function MarkdownContent({ content, accentColor = 'var(--accent-c
                   fontStyle: 'normal',
                 }}
               >
-                {props.children}
+                {children}
               </blockquote>
             );
           },
           // Inline code
           code(props) {
-            const { children, className } = props;
+            const { children, className, node, ...rest } = props as typeof props & { node?: unknown };
             return (
               <code
                 className={className}
+                {...rest}
                 style={{
                   background: 'rgba(255,255,255,0.06)',
                   padding: '2px 6px',
