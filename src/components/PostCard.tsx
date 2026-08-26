@@ -58,7 +58,7 @@ export default function PostCard({ post }: PostCardProps) {
         {/* Meta */}
         <div className="post-card-meta">
           <div className="post-card-meta-left">
-            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span className="post-card-meta-item">
               <Calendar size={12} style={{ color: catInfo?.color || 'var(--accent-cyan)' }} aria-hidden="true" />
               {new Date(post.date).toLocaleDateString('sr-RS', {
                 day: 'numeric',
@@ -66,12 +66,12 @@ export default function PostCard({ post }: PostCardProps) {
                 year: 'numeric',
               })}
             </span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span className="post-card-meta-item">
               <Clock size={12} style={{ color: catInfo?.color || 'var(--accent-cyan)' }} aria-hidden="true" />
               {post.readTime}
             </span>
           </div>
-          <span style={{ color: catInfo?.color || 'var(--accent-cyan)', fontSize: '0.75rem', fontWeight: 800 }}>
+          <span className="post-card-meta-action" style={{ color: catInfo?.color || 'var(--accent-cyan)' }}>
             PROČITAJTE →
           </span>
         </div>
