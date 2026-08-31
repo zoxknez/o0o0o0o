@@ -8,12 +8,54 @@ interface Props {
   accentColor?: string;
 }
 
+// Helper to extract text from React children for slug generation
+function getNodeText(node: unknown): string {
+  if (typeof node === 'string') return node;
+  if (typeof node === 'number') return String(node);
+  if (Array.isArray(node)) return node.map(getNodeText).join('');
+  if (node && typeof node === 'object' && 'props' in node) {
+    const reactElem = node as { props?: { children?: unknown } };
+    return getNodeText(reactElem.props?.children);
+  }
+  return '';
+}
+
+function slugify(text: string): string {
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/[^\p{L}\p{N}\s-]/gu, '') // Keep alphanumeric unicode characters
+    .replace(/[\s_-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
 export default function MarkdownContent({ content, accentColor = 'var(--accent-cyan)' }: Props) {
   return (
     <div className="markdown-body">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
+          h2(props) {
+            const { children, node, ...rest } = props as typeof props & { node?: unknown };
+            const text = getNodeText(children);
+            const id = slugify(text);
+            return (
+              <h2 id={id} {...rest}>
+                {children}
+              </h2>
+            );
+          },
+          h3(props) {
+            const { children, node, ...rest } = props as typeof props & { node?: unknown };
+            const text = getNodeText(children);
+            const id = slugify(text);
+            return (
+              <h3 id={id} {...rest}>
+                {children}
+              </h3>
+            );
+          },
           // External links: open in new tab + show URL
           a(props) {
             const { href, children, node, ...rest } = props as typeof props & { node?: unknown };
