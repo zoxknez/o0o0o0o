@@ -54,7 +54,7 @@ export default function MarkdownContent({ content, accentColor = 'var(--accent-c
         remarkPlugins={[remarkGfm]}
         components={{
           h2(props) {
-            const { children, ...rest } = props;
+            const { children, node, ...rest } = props as typeof props & { node?: unknown };
             const text = getNodeText(children);
             const id = slugify(text);
             return (
@@ -65,7 +65,7 @@ export default function MarkdownContent({ content, accentColor = 'var(--accent-c
             );
           },
           h3(props) {
-            const { children, ...rest } = props;
+            const { children, node, ...rest } = props as typeof props & { node?: unknown };
             const text = getNodeText(children);
             const id = slugify(text);
             return (
@@ -76,7 +76,7 @@ export default function MarkdownContent({ content, accentColor = 'var(--accent-c
           },
           // Enhanced links: clean download badges vs styled external links
           a(props) {
-            const { href, children, ...rest } = props;
+            const { href, children, node, ...rest } = props as typeof props & { node?: unknown };
             const isExternal = href?.startsWith('http');
             const text = getNodeText(children);
             const isDownload =
@@ -185,7 +185,7 @@ export default function MarkdownContent({ content, accentColor = 'var(--accent-c
           },
           // Bold highlight with accent color
           strong(props) {
-            const { children, ...rest } = props;
+            const { children, node, ...rest } = props as typeof props & { node?: unknown };
             return (
               <strong style={{ color: accentColor, fontWeight: 700 }} {...rest}>
                 {children}
@@ -194,7 +194,7 @@ export default function MarkdownContent({ content, accentColor = 'var(--accent-c
           },
           // Blockquotes as premium callout cards
           blockquote(props) {
-            const { children, ...rest } = props;
+            const { children, node, ...rest } = props as typeof props & { node?: unknown };
             return (
               <blockquote
                 className="md-blockquote glass"
@@ -210,12 +210,12 @@ export default function MarkdownContent({ content, accentColor = 'var(--accent-c
           },
           // Code blocks with copy button & language pill
           pre(props) {
-            const { children } = props;
+            const { children, node, ...rest } = props as typeof props & { node?: unknown };
             return <CodeBlockContainer>{children}</CodeBlockContainer>;
           },
           // Inline code
           code(props) {
-            const { children, className, ...rest } = props;
+            const { children, className, node, ...rest } = props as typeof props & { node?: unknown };
             // If inside pre, CodeBlockContainer handles it
             return (
               <code className={className || 'md-inline-code'} {...rest}>
@@ -225,9 +225,10 @@ export default function MarkdownContent({ content, accentColor = 'var(--accent-c
           },
           // Tables wrapped in responsive glass container
           table(props) {
+            const { node, ...rest } = props as typeof props & { node?: unknown };
             return (
               <div className="md-table-wrap glass">
-                <table className="md-table" {...props} />
+                <table className="md-table" {...rest} />
               </div>
             );
           },
