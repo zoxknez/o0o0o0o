@@ -12,6 +12,8 @@ import {
   Sparkles,
   Users,
   ArrowUpRight,
+  Flame,
+  ExternalLink,
 } from 'lucide-react';
 
 // Social Icon Components (SVG)
@@ -77,11 +79,16 @@ const categoryCards = [
 ];
 
 export default function HomeCategories() {
+  const allPosts = getAllPosts();
+  const sortedPosts = [...allPosts].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
   return (
     <div className="home-wrap">
       <h1 className="sr-only">o0o0o0o IT blog: tutorijali, vesti, programi i saveti</h1>
 
-      {/* Ambient background orbs */}
+      {/* Ambient deep aura lighting */}
       <div className="orb orb-1" aria-hidden="true" />
       <div className="orb orb-2" aria-hidden="true" />
       <div className="orb orb-3" aria-hidden="true" />
@@ -102,7 +109,7 @@ export default function HomeCategories() {
               aria-label={`${cat.name} - ${count} objava`}
               style={{
                 '--c': cat.color,
-                animationDelay: `${0.05 + i * 0.04}s`,
+                animationDelay: `${0.04 + i * 0.03}s`,
               } as React.CSSProperties}
             >
               <div className="bento-noise" aria-hidden="true" />
@@ -115,8 +122,11 @@ export default function HomeCategories() {
                     <IconComp size={24} className="bento-icon-svg" />
                   </div>
                   <span className="bento-count" aria-label={`${count} objava`}>
+                    <span className="bento-count-dot" style={{ backgroundColor: cat.color }} />
                     <span className="bento-count-num">{count}</span>
-                    <span className="bento-count-label">{count === 1 ? 'objava' : 'objava'}</span>
+                    <span className="bento-count-label">
+                      {count === 1 ? 'objava' : count < 5 ? 'objave' : 'objava'}
+                    </span>
                   </span>
                 </div>
 
@@ -136,58 +146,60 @@ export default function HomeCategories() {
       </main>
 
       {/* Latest Posts Section */}
-      <section className="latest-posts-section container reveal" style={{ marginTop: '70px', marginBottom: '40px' }}>
-        <div className="section-header" style={{ marginBottom: '36px', display: 'flex', alignItems: 'center', gap: '20px' }}>
-          <div style={{ 
-            width: '40px', height: '40px', 
-            borderRadius: '12px', 
-            background: 'linear-gradient(135deg, var(--accent-cyan), var(--accent-purple))',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            boxShadow: '0 8px 20px rgba(0, 212, 255, 0.2)',
-            flexShrink: 0
-          }}>
-            <span style={{ color: '#fff', fontWeight: 900, fontSize: '1.2rem' }}>⚡</span>
+      <section
+        className="latest-posts-section container reveal"
+        style={{ marginTop: '72px', marginBottom: '40px' }}
+      >
+        <div className="section-header-modern">
+          <div className="section-header-left">
+            <div className="section-icon-badge">
+              <Flame size={20} className="section-flame-icon" aria-hidden="true" />
+            </div>
+            <div>
+              <div className="section-kicker">SVEŽE PUBLIKACIJE</div>
+              <h2 className="section-title-modern">Najnovije objave</h2>
+            </div>
           </div>
-          <h2 className="section-title" style={{ fontSize: '2rem', fontWeight: 900, letterSpacing: '-0.04em', margin: 0 }}>
-            Najnovije objave
-          </h2>
-          <div className="section-line" style={{ flex: 1, height: '1px', background: 'linear-gradient(to right, var(--border), transparent)', marginTop: '4px' }} />
+
+          <div className="section-meta-pill glass">
+            <span className="section-meta-dot" aria-hidden="true" />
+            <span>{allPosts.length} objavljenih vodiča</span>
+          </div>
         </div>
-        
-        <PaginatedPostGrid 
-          posts={[...getAllPosts()].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())} 
-          itemsPerPage={6} 
-        />
+
+        <PaginatedPostGrid posts={sortedPosts} itemsPerPage={6} />
       </section>
 
       {/* Social Hub */}
-      <section className="social-hub container reveal">
-        <a 
-          href="https://github.com/zoxknez" 
-          target="_blank" 
-          rel="noopener noreferrer" 
+      <section className="social-hub container reveal" aria-label="Društvene mreže i profil">
+        <a
+          href="https://github.com/zoxknez"
+          target="_blank"
+          rel="noopener noreferrer"
           className="social-card github glass shimmer"
           id="hero-social-github"
         >
-          <GithubIcon size={36} />
+          <GithubIcon size={34} />
           <div className="social-card-text">
             <span className="social-card-label">GitHub</span>
-            <span className="social-card-sub">@zoxknez</span>
+            <span className="social-card-sub">@zoxknez • Open Source</span>
           </div>
+          <ExternalLink size={16} className="social-card-ext" aria-hidden="true" />
         </a>
-        
-        <a 
-          href="https://x.com/KoronVirus" 
-          target="_blank" 
-          rel="noopener noreferrer" 
+
+        <a
+          href="https://x.com/KoronVirus"
+          target="_blank"
+          rel="noopener noreferrer"
           className="social-card x-platform glass shimmer"
           id="hero-social-x"
         >
-          <XIcon size={36} />
+          <XIcon size={34} />
           <div className="social-card-text">
             <span className="social-card-label">Twitter / X</span>
-            <span className="social-card-sub">@KoronVirus</span>
+            <span className="social-card-sub">@KoronVirus • Vesti i najave</span>
           </div>
+          <ExternalLink size={16} className="social-card-ext" aria-hidden="true" />
         </a>
       </section>
 
@@ -196,8 +208,8 @@ export default function HomeCategories() {
           display: flex;
           flex-direction: column;
           position: relative;
-          padding-top: clamp(96px, 10vw, 120px);
-          padding-bottom: 40px;
+          padding-top: clamp(86px, 8vw, 110px);
+          padding-bottom: 50px;
           overflow-x: hidden;
           width: 100%;
         }
@@ -205,33 +217,33 @@ export default function HomeCategories() {
         .orb {
           position: fixed;
           border-radius: 50%;
-          filter: blur(120px);
+          filter: blur(130px);
           pointer-events: none;
           z-index: 0;
         }
         .orb-1 {
-          width: 600px; height: 600px;
-          background: radial-gradient(circle, rgba(0,212,255,0.07) 0%, transparent 70%);
-          top: -200px; left: -100px;
-          animation: drift1 18s ease-in-out infinite alternate;
+          width: 650px; height: 650px;
+          background: radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 70%);
+          top: -180px; left: -100px;
+          animation: drift1 20s ease-in-out infinite alternate;
         }
         .orb-2 {
-          width: 500px; height: 500px;
-          background: radial-gradient(circle, rgba(124,58,237,0.06) 0%, transparent 70%);
-          bottom: 0; right: -120px;
-          animation: drift2 22s ease-in-out infinite alternate;
+          width: 550px; height: 550px;
+          background: radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%);
+          bottom: 10%; right: -120px;
+          animation: drift2 24s ease-in-out infinite alternate;
         }
         .orb-3 {
-          width: 300px; height: 300px;
+          width: 400px; height: 400px;
           background: radial-gradient(circle, rgba(0,255,136,0.04) 0%, transparent 70%);
-          top: 50%; left: 50%;
+          top: 45%; left: 50%;
           transform: translate(-50%, -50%);
-          animation: drift3 15s ease-in-out infinite alternate;
+          animation: drift3 18s ease-in-out infinite alternate;
         }
 
-        @keyframes drift1 { to { transform: translate(60px, 80px); } }
-        @keyframes drift2 { to { transform: translate(-40px, -60px); } }
-        @keyframes drift3 { to { transform: translate(-50%, -50%) scale(1.4); } }
+        @keyframes drift1 { to { transform: translate(50px, 70px); } }
+        @keyframes drift2 { to { transform: translate(-50px, -50px); } }
+        @keyframes drift3 { to { transform: translate(-50%, -50%) scale(1.3); } }
 
         .bento-grid {
           display: grid;
@@ -239,27 +251,27 @@ export default function HomeCategories() {
           gap: 20px;
           position: relative;
           z-index: 1;
-          padding-top: 10px;
+          padding-top: 14px;
           padding-bottom: 20px;
         }
 
         .bento-card {
           position: relative;
-          background: rgba(13, 18, 30, 0.7);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          border-radius: 20px;
+          background: rgba(11, 16, 28, 0.72);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 255, 255, 0.07);
+          border-radius: 22px;
           padding: 24px 26px;
-          min-height: 180px;
+          min-height: 185px;
           text-decoration: none;
           overflow: hidden;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-                      border-color 0.25s ease,
-                      box-shadow 0.3s ease,
+          transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                      border-color 0.3s ease,
+                      box-shadow 0.35s ease,
                       background 0.3s ease;
           animation: bentoPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
         }
@@ -271,54 +283,54 @@ export default function HomeCategories() {
         }
 
         @keyframes bentoPop {
-          from { opacity: 0; transform: scale(0.94) translateY(14px); }
-          to   { opacity: 1; transform: scale(1)   translateY(0); }
+          from { opacity: 0; transform: scale(0.95) translateY(12px); }
+          to   { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         .bento-card:hover {
-          transform: translateY(-6px);
-          border-color: color-mix(in srgb, var(--c) 50%, rgba(255,255,255,0.2));
-          background: rgba(18, 24, 40, 0.85);
-          box-shadow: 0 20px 45px rgba(0,0,0,0.6),
-                      0 0 30px color-mix(in srgb, var(--c) 15%, transparent);
+          transform: translateY(-7px);
+          border-color: color-mix(in srgb, var(--c) 55%, rgba(255,255,255,0.25));
+          background: rgba(15, 22, 38, 0.9);
+          box-shadow: 0 24px 50px rgba(0,0,0,0.65),
+                      0 0 35px color-mix(in srgb, var(--c) 20%, transparent);
         }
 
         .bento-noise {
           position: absolute;
           inset: 0;
           background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-          opacity: 0.3;
+          opacity: 0.25;
           pointer-events: none;
         }
 
         .bento-glow {
           position: absolute;
-          top: -30px; right: -30px;
-          width: 120px; height: 120px;
+          top: -35px; right: -35px;
+          width: 140px; height: 140px;
           background: radial-gradient(circle, var(--c) 0%, transparent 70%);
-          opacity: 0.12;
+          opacity: 0.14;
           border-radius: 50%;
-          transition: opacity 0.3s ease, transform 0.4s ease;
+          transition: opacity 0.35s ease, transform 0.45s ease;
           pointer-events: none;
         }
 
         .bento-card:hover .bento-glow {
-          opacity: 0.28;
-          transform: scale(1.4);
+          opacity: 0.35;
+          transform: scale(1.45);
         }
 
         .bento-line {
           position: absolute;
           top: 0; left: 24px;
-          width: 36px; height: 3px;
+          width: 40px; height: 3px;
           background: var(--c);
           border-radius: 0 0 4px 4px;
-          box-shadow: 0 0 10px var(--c);
+          box-shadow: 0 0 12px var(--c);
           transition: width 0.3s ease;
         }
 
         .bento-card:hover .bento-line {
-          width: 56px;
+          width: 64px;
         }
 
         .bento-content {
@@ -342,39 +354,46 @@ export default function HomeCategories() {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 46px;
-          height: 46px;
-          border-radius: 13px;
-          background: color-mix(in srgb, var(--c) 12%, rgba(255,255,255,0.03));
-          border: 1px solid color-mix(in srgb, var(--c) 30%, rgba(255,255,255,0.08));
+          width: 48px;
+          height: 48px;
+          border-radius: 14px;
+          background: color-mix(in srgb, var(--c) 14%, rgba(255,255,255,0.03));
+          border: 1px solid color-mix(in srgb, var(--c) 35%, rgba(255,255,255,0.08));
           color: var(--c);
-          transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-          box-shadow: 0 4px 14px color-mix(in srgb, var(--c) 15%, transparent);
+          transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+          box-shadow: 0 4px 16px color-mix(in srgb, var(--c) 18%, transparent);
         }
 
         .bento-card:hover .bento-icon-wrap {
-          transform: scale(1.08) rotate(3deg);
-          background: color-mix(in srgb, var(--c) 22%, rgba(255,255,255,0.05));
-          border-color: color-mix(in srgb, var(--c) 60%, transparent);
-          box-shadow: 0 6px 20px color-mix(in srgb, var(--c) 35%, transparent);
+          transform: scale(1.1) rotate(4deg);
+          background: color-mix(in srgb, var(--c) 25%, rgba(255,255,255,0.06));
+          border-color: color-mix(in srgb, var(--c) 70%, transparent);
+          box-shadow: 0 8px 24px color-mix(in srgb, var(--c) 40%, transparent);
         }
 
         .bento-icon-svg {
-          filter: drop-shadow(0 0 6px var(--c));
+          filter: drop-shadow(0 0 8px var(--c));
         }
 
         .bento-count {
           display: inline-flex;
           align-items: center;
-          gap: 4px;
+          gap: 6px;
           font-family: var(--font-mono);
           font-size: 0.72rem;
           color: var(--c);
           background: color-mix(in srgb, var(--c) 10%, rgba(255,255,255,0.02));
-          border: 1px solid color-mix(in srgb, var(--c) 25%, transparent);
-          padding: 4px 10px;
+          border: 1px solid color-mix(in srgb, var(--c) 28%, transparent);
+          padding: 5px 11px;
           border-radius: 100px;
           font-weight: 600;
+        }
+
+        .bento-count-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          box-shadow: 0 0 6px currentColor;
         }
 
         .bento-count-num {
@@ -382,14 +401,14 @@ export default function HomeCategories() {
         }
 
         .bento-count-label {
-          opacity: 0.75;
+          opacity: 0.8;
           font-size: 0.68rem;
         }
 
         .bento-bottom {
           display: flex;
           flex-direction: column;
-          gap: 4px;
+          gap: 5px;
         }
 
         .bento-name-row {
@@ -400,11 +419,11 @@ export default function HomeCategories() {
         }
 
         .bento-name {
-          font-size: 1.22rem;
+          font-size: 1.25rem;
           font-weight: 800;
           color: #fff;
           margin: 0;
-          letter-spacing: -0.01em;
+          letter-spacing: -0.015em;
           transition: color 0.2s ease;
         }
 
@@ -429,7 +448,7 @@ export default function HomeCategories() {
           align-items: center;
           justify-content: center;
           color: var(--c);
-          opacity: 0.4;
+          opacity: 0.45;
           transform: translate(-3px, 3px);
           transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
@@ -439,14 +458,87 @@ export default function HomeCategories() {
           transform: translate(0, 0);
         }
 
+        /* ─── Modern Section Header ─── */
+        .section-header-modern {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 16px;
+          margin-bottom: 34px;
+          padding-bottom: 18px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .section-header-left {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+        }
+
+        .section-icon-badge {
+          width: 44px;
+          height: 44px;
+          border-radius: 14px;
+          background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(124, 58, 237, 0.2));
+          border: 1px solid rgba(0, 212, 255, 0.35);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 8px 24px rgba(0, 212, 255, 0.25);
+          flex-shrink: 0;
+        }
+
+        .section-flame-icon {
+          color: var(--accent-cyan);
+          filter: drop-shadow(0 0 6px var(--accent-cyan));
+        }
+
+        .section-kicker {
+          font-family: var(--font-mono);
+          font-size: 0.72rem;
+          color: var(--accent-cyan);
+          letter-spacing: 0.14em;
+          font-weight: 700;
+          margin-bottom: 2px;
+        }
+
+        .section-title-modern {
+          font-size: 1.9rem;
+          font-weight: 900;
+          letter-spacing: -0.035em;
+          margin: 0;
+          color: var(--text-primary);
+        }
+
+        .section-meta-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 16px;
+          border-radius: 100px;
+          font-size: 0.8rem;
+          font-weight: 600;
+          color: var(--text-secondary);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .section-meta-dot {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: #10b981;
+          box-shadow: 0 0 8px #10b981;
+        }
+
         /* ─── Social Hub Styles ─── */
         .social-hub {
           margin-top: clamp(48px, 8vw, 80px);
           margin-bottom: 0;
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 24px;
-          padding: 0 24px;
+          gap: 22px;
+          padding: 0;
           position: relative;
           z-index: 1;
         }
@@ -454,46 +546,65 @@ export default function HomeCategories() {
         .social-card {
           display: flex;
           align-items: center;
-          gap: 24px;
-          padding: 24px 32px;
-          background: rgba(13, 18, 30, 0.7);
+          gap: 22px;
+          padding: 24px 30px;
+          background: rgba(11, 16, 28, 0.72);
           border: 1px solid rgba(255, 255, 255, 0.08);
-          border-radius: 24px;
+          border-radius: 22px;
           text-decoration: none;
           color: var(--text-primary);
           transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
           min-width: 0;
           width: 100%;
-          backdrop-filter: blur(16px);
-          justify-content: center;
+          backdrop-filter: blur(18px);
+          position: relative;
         }
 
         .social-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-          background: rgba(255, 255, 255, 0.04);
+          transform: translateY(-6px);
+          box-shadow: 0 24px 50px rgba(0,0,0,0.6);
+          background: rgba(16, 24, 42, 0.9);
         }
 
-        .social-card.github:hover { border-color: #fff; color: #fff; box-shadow: 0 0 30px rgba(255,255,255,0.12); }
-        .social-card.x-platform:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); box-shadow: 0 0 30px rgba(0,212,255,0.15); }
+        .social-card.github:hover {
+          border-color: rgba(255, 255, 255, 0.4);
+          color: #fff;
+          box-shadow: 0 0 35px rgba(255, 255, 255, 0.15);
+        }
+        .social-card.x-platform:hover {
+          border-color: var(--accent-cyan);
+          color: var(--accent-cyan);
+          box-shadow: 0 0 35px rgba(0, 212, 255, 0.2);
+        }
 
         .social-card-text {
           display: flex;
           flex-direction: column;
           gap: 3px;
+          flex: 1;
         }
 
         .social-card-label {
           font-weight: 800;
-          font-size: 1.3rem;
+          font-size: 1.25rem;
           letter-spacing: -0.02em;
         }
 
         .social-card-sub {
-          font-size: 0.88rem;
+          font-size: 0.85rem;
           font-family: var(--font-mono);
           color: var(--text-muted);
-          opacity: 0.7;
+          opacity: 0.75;
+        }
+
+        .social-card-ext {
+          opacity: 0.35;
+          transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .social-card:hover .social-card-ext {
+          opacity: 1;
+          transform: translate(2px, -2px);
         }
 
         /* ─── Responsive ─── */
@@ -504,10 +615,11 @@ export default function HomeCategories() {
         @media (max-width: 640px) {
           .bento-grid { grid-template-columns: 1fr; gap: 12px; }
           .bento-card { min-height: 140px; padding: 18px 20px; border-radius: 16px; }
-          .bento-icon-wrap { width: 40px; height: 40px; border-radius: 10px; }
+          .bento-icon-wrap { width: 42px; height: 42px; border-radius: 11px; }
           .bento-name { font-size: 1.1rem; }
           .bento-tagline { font-size: 0.78rem; }
-          .social-hub { grid-template-columns: 1fr; gap: 14px; padding: 0 12px; }
+          .social-hub { grid-template-columns: 1fr; gap: 14px; }
+          .section-title-modern { font-size: 1.5rem; }
         }
 
         @media (prefers-reduced-motion: reduce) {

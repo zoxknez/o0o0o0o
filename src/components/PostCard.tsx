@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { type Post, getCategoryInfo } from '@/lib/posts';
-import { Clock, Calendar } from 'lucide-react';
+import { type Post, getCategoryInfo, getPostImage } from '@/lib/posts';
+import { Clock, Calendar, ArrowRight } from 'lucide-react';
 
 interface PostCardProps {
   post: Post;
@@ -20,7 +20,9 @@ const categoryEmojis: Record<string, string> = {
 
 export default function PostCard({ post }: PostCardProps) {
   const catInfo = getCategoryInfo(post.category);
-  const emoji = categoryEmojis[post.category] || '📝';
+  const emoji = categoryEmojis[post.category] || '⚡';
+  const imageUrl = getPostImage(post);
+  const accentColor = catInfo?.color || 'var(--accent-cyan)';
 
   return (
     <Link
@@ -28,23 +30,54 @@ export default function PostCard({ post }: PostCardProps) {
       className="post-card shimmer reveal glass"
       id={`post-card-${post.id}`}
       aria-label={`Pročitajte: ${post.title}`}
+      style={{
+        '--post-accent': accentColor,
+      } as React.CSSProperties}
     >
       {/* Thumbnail */}
-      <div className="post-card-image" style={{ background: `linear-gradient(135deg, ${catInfo?.color}05, ${catInfo?.color}15)` }}>
-        <div className="post-card-image-inner" style={{ color: catInfo?.color, opacity: 0.2 }}>{emoji}</div>
+      <div className="post-card-image">
+        {imageUrl ? (
+          <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={imageUrl}
+              alt=""
+              loading="lazy"
+              className="post-card-thumb-img"
+            />
+            <div className="post-card-img-overlay" aria-hidden="true" />
+          </>
+        ) : (
+          <div
+            className="post-card-placeholder"
+            style={{
+              background: `radial-gradient(circle at 30% 20%, ${accentColor}25 0%, transparent 60%),
+                           linear-gradient(135deg, rgba(13, 18, 30, 0.95), rgba(7, 10, 19, 0.98))`,
+            }}
+          >
+            <div className="post-card-placeholder-mesh" aria-hidden="true" />
+            <div className="post-card-placeholder-icon" style={{ color: accentColor }}>
+              {emoji}
+            </div>
+          </div>
+        )}
 
         {/* Category badge */}
         {catInfo && (
           <span
             className="post-card-cat-badge glass"
             style={{
-              background: `${catInfo.color}15`,
-              color: catInfo.color,
-              border: `1px solid ${catInfo.color}30`,
-              backdropFilter: 'blur(10px)',
-              fontWeight: 700
+              background: `${accentColor}22`,
+              color: accentColor,
+              borderColor: `${accentColor}44`,
+              boxShadow: `0 4px 12px ${accentColor}20`,
             }}
           >
+            <span
+              className="post-card-cat-dot"
+              style={{ background: accentColor, boxShadow: `0 0 8px ${accentColor}` }}
+              aria-hidden="true"
+            />
             {catInfo.name}
           </span>
         )}
@@ -52,14 +85,14 @@ export default function PostCard({ post }: PostCardProps) {
 
       {/* Body */}
       <div className="post-card-body">
-        <h3 className="post-card-title" style={{ color: 'var(--text-primary)' }}>{post.title}</h3>
+        <h3 className="post-card-title">{post.title}</h3>
         <p className="post-card-excerpt">{post.excerpt}</p>
 
         {/* Meta */}
         <div className="post-card-meta">
           <div className="post-card-meta-left">
             <span className="post-card-meta-item">
-              <Calendar size={12} style={{ color: catInfo?.color || 'var(--accent-cyan)' }} aria-hidden="true" />
+              <Calendar size={13} style={{ color: accentColor }} aria-hidden="true" />
               {new Date(post.date).toLocaleDateString('sr-RS', {
                 day: 'numeric',
                 month: 'short',
@@ -67,12 +100,13 @@ export default function PostCard({ post }: PostCardProps) {
               })}
             </span>
             <span className="post-card-meta-item">
-              <Clock size={12} style={{ color: catInfo?.color || 'var(--accent-cyan)' }} aria-hidden="true" />
+              <Clock size={13} style={{ color: accentColor }} aria-hidden="true" />
               {post.readTime}
             </span>
           </div>
-          <span className="post-card-meta-action" style={{ color: catInfo?.color || 'var(--accent-cyan)' }}>
-            PROČITAJTE →
+          <span className="post-card-meta-action" style={{ color: accentColor }}>
+            <span>Čitajte</span>
+            <ArrowRight size={13} className="post-card-arrow" aria-hidden="true" />
           </span>
         </div>
       </div>

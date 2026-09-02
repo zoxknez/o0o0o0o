@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Search, Menu, X } from 'lucide-react';
 import { categories } from '@/lib/posts';
 
-const MOBILE_MEDIA_QUERY = '(max-width: 1100px)';
+const MOBILE_MEDIA_QUERY = '(max-width: 1200px)';
 
 type MenuState = {
   open: boolean;

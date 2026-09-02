@@ -1,19 +1,13 @@
 import type { Metadata } from 'next';
-import type { CSSProperties } from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getPostBySlug, getCategoryInfo, getAllPosts } from '@/lib/posts';
-import { Clock, Calendar, ChevronRight, ArrowLeft } from 'lucide-react';
+import { getPostBySlug, getCategoryInfo, getAllPosts, getRelatedPosts } from '@/lib/posts';
+import { Clock, Calendar, ChevronRight, ArrowLeft, Sparkles, BookOpen } from 'lucide-react';
 import ReadingProgress from '@/components/ReadingProgress';
 import MarkdownContent from '@/components/MarkdownContent';
+import PostCard from '@/components/PostCard';
 
 type Params = { slug: string };
-
-const articleParticles: CSSProperties[] = Array.from({ length: 12 }, (_, i) => ({
-  left: `${(i * 17 + 9) % 100}%`,
-  top: `${(i * 23 + 11) % 100}%`,
-  '--duration': `${15 + ((i * 7) % 15)}s`,
-}));
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -37,7 +31,7 @@ export async function generateMetadata(
 
   return {
     title: {
-      absolute: `${post.title} - o0o0o0o`
+      absolute: `${post.title} - o0o0o0o`,
     },
     description: post.excerpt,
     keywords: post.tags,
@@ -59,15 +53,15 @@ export async function generateMetadata(
           width: 1200,
           height: 630,
           alt: post.title,
-        }
-      ]
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
       images: [postImage],
-    }
+    },
   };
 }
 
@@ -80,54 +74,59 @@ export default async function PostPage(
   if (!post) notFound();
 
   const cat = getCategoryInfo(post.category);
+  const accentColor = cat?.color || 'var(--accent-cyan)';
+  const relatedPosts = getRelatedPosts(post, 3);
 
   return (
     <article className="post-page">
-      <ReadingProgress color={cat?.color || 'var(--accent-cyan)'} />
-      
-      {/* ── Ambient Reading Layer ── */}
-      <div className="article-ambient">
-        <div className="light-beam article-beam-left" />
-        <div className="light-beam" style={{ right: '-5%', top: '40%', animationDelay: '-5s', background: `linear-gradient(to bottom, ${cat?.color || 'var(--accent-cyan)'}, transparent)` }} />
-        {[...Array(12)].map((_, i) => (
-          <div 
-            key={i} 
-            className="particle" 
-            style={{ 
-              ...articleParticles[i],
-              background: i % 2 === 0 ? cat?.color || 'var(--accent-cyan)' : '#fff',
-            }}
-          />
-        ))}
+      <ReadingProgress color={accentColor} />
+
+      {/* ── Ambient Reading Glow ── */}
+      <div className="article-ambient" aria-hidden="true">
+        <div
+          className="post-ambient-glow post-ambient-left"
+          style={{ background: `radial-gradient(circle, ${accentColor}18 0%, transparent 70%)` }}
+        />
+        <div
+          className="post-ambient-glow post-ambient-right"
+          style={{ background: `radial-gradient(circle, ${accentColor}12 0%, transparent 70%)` }}
+        />
       </div>
-      
+
       {/* ── Prism Header ── */}
       <header
         className="post-header post-hero reveal"
         aria-label="Zaglavlje objave"
       >
-        {/* Dynamic Mesh Background */}
-        <div className="liquid-bg" style={{ 
-          background: cat 
-            ? `radial-gradient(circle at 30% 20%, ${cat.color}25 0%, transparent 40%),
-               radial-gradient(circle at 70% 60%, ${cat.color}15 0%, transparent 45%)`
-            : `radial-gradient(circle at 30% 20%, var(--accent-cyan)20 0%, transparent 40%)`
-        }} aria-hidden="true" />
+        <div
+          className="liquid-bg"
+          style={{
+            background: `radial-gradient(circle at 30% 20%, ${accentColor}25 0%, transparent 45%),
+                         radial-gradient(circle at 75% 55%, ${accentColor}15 0%, transparent 50%)`,
+          }}
+          aria-hidden="true"
+        />
 
         <div className="container post-hero-inner">
           <div className="editorial-grid post-hero-grid">
-            
             {/* Breadcrumb Pilled */}
             <nav className="breadcrumb post-breadcrumb glass-prism reveal stagger-1">
-              <Link href="/" style={{ color: 'inherit', textDecoration: 'none' }}>Početna</Link>
-              <ChevronRight size={10} style={{ opacity: 0.5 }} />
+              <Link href="/" style={{ color: 'inherit', textDecoration: 'none' }}>
+                Početna
+              </Link>
+              <ChevronRight size={11} style={{ opacity: 0.5 }} />
               {cat && (
                 <>
-                  <Link href={`/${post.category}`} style={{ color: cat.color, textDecoration: 'none', fontWeight: 700 }}>{cat.name}</Link>
-                  <ChevronRight size={10} style={{ opacity: 0.5 }} />
+                  <Link
+                    href={`/${post.category}`}
+                    style={{ color: cat.color, textDecoration: 'none', fontWeight: 700 }}
+                  >
+                    {cat.name}
+                  </Link>
+                  <ChevronRight size={11} style={{ opacity: 0.5 }} />
                 </>
               )}
-              <span style={{ opacity: 0.8 }}>Članak</span>
+              <span style={{ opacity: 0.85 }}>Članak</span>
             </nav>
 
             {/* Title Block */}
@@ -139,16 +138,20 @@ export default async function PostPage(
               {/* Meta Data Prism */}
               <div className="reveal stagger-3 glass-prism post-hero-meta">
                 <span className="post-meta-chip">
-                  <Calendar size={14} style={{ color: cat?.color || 'var(--accent-cyan)' }} />
-                  {new Date(post.date).toLocaleDateString('sr-RS', { day: 'numeric', month: 'long', year: 'numeric' })}
+                  <Calendar size={14} style={{ color: accentColor }} aria-hidden="true" />
+                  {new Date(post.date).toLocaleDateString('sr-RS', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                  })}
                 </span>
                 <span className="post-meta-chip">
-                  <Clock size={14} style={{ color: cat?.color || 'var(--accent-cyan)' }} />
+                  <Clock size={14} style={{ color: accentColor }} aria-hidden="true" />
                   {post.readTime}
                 </span>
                 <div className="post-meta-divider" />
                 <span className="post-meta-chip">
-                  Autor: <strong style={{ color: cat?.color || 'var(--accent-cyan)' }}>{post.author}</strong>
+                  Autor: <strong style={{ color: accentColor }}>{post.author}</strong>
                 </span>
               </div>
 
@@ -161,7 +164,6 @@ export default async function PostPage(
                 ))}
               </div>
             </div>
-
           </div>
         </div>
       </header>
@@ -169,27 +171,55 @@ export default async function PostPage(
       {/* Content */}
       <div className="container post-shell">
         <div className="post-body">
-          {/* Excerpt highlight */}
+          {/* Excerpt highlight card */}
           <div
             className="reveal glass-prism stagger-4 post-excerpt-card"
             style={{
               animationDelay: '0.4s',
-              borderLeft: `4px solid ${cat?.color || 'var(--accent-cyan)'}`,
+              borderLeft: `4px solid ${accentColor}`,
               boxShadow: 'var(--shadow-premium)',
               position: 'relative',
-              zIndex: 1
+              zIndex: 1,
             }}
             aria-label="Kratak opis objave"
           >
-            {post.excerpt}
+            <div className="post-excerpt-badge" style={{ color: accentColor }}>
+              <Sparkles size={14} aria-hidden="true" />
+              <span>Sažetak</span>
+            </div>
+            <p className="post-excerpt-text">{post.excerpt}</p>
           </div>
 
-          <div className="post-content reveal animate-in stagger-5" style={{ position: 'relative', zIndex: 1 }} aria-label="Sadržaj objave">
-            <MarkdownContent 
+          <div
+            className="post-content reveal animate-in stagger-5"
+            style={{ position: 'relative', zIndex: 1 }}
+            aria-label="Sadržaj objave"
+          >
+            <MarkdownContent
               content={post.content}
-              accentColor={cat?.color || 'var(--accent-cyan)'}
+              accentColor={accentColor}
             />
           </div>
+
+          {/* Related posts */}
+          {relatedPosts.length > 0 && (
+            <section className="post-related-section reveal stagger-5" aria-label="Povezane objave">
+              <div className="post-related-header">
+                <div className="post-related-badge" style={{ color: accentColor }}>
+                  <BookOpen size={16} aria-hidden="true" />
+                  <span>Istražite još</span>
+                </div>
+                <h3 className="post-related-title">
+                  Povezane objave {cat ? `iz rubrike ${cat.name}` : ''}
+                </h3>
+              </div>
+              <div className="posts-grid post-related-grid">
+                {relatedPosts.map((relPost) => (
+                  <PostCard key={relPost.id} post={relPost} />
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* Back button */}
           <div className="reveal stagger-5 post-back-wrap">
@@ -198,8 +228,8 @@ export default async function PostPage(
               className="glass-prism stagger-5 post-back-link"
               id="post-back-btn"
             >
-              <ArrowLeft size={18} aria-hidden="true" style={{ color: cat?.color || 'var(--accent-cyan)' }} />
-              Povratak na {cat?.name || 'početnu'}
+              <ArrowLeft size={18} aria-hidden="true" style={{ color: accentColor }} />
+              <span>Povratak na {cat?.name || 'početnu'}</span>
             </Link>
           </div>
         </div>

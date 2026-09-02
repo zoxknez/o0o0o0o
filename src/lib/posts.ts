@@ -130,3 +130,29 @@ export function searchPosts(query: string): Post[] {
 export function getCategoryInfo(slug: string) {
   return categories.find(c => c.slug === slug);
 }
+
+export function getPostImage(post: Post): string | null {
+  const match = post.content.match(/!\[.*?\]\((.*?)\)/);
+  if (!match) return null;
+  let url = match[1];
+  if (url.endsWith('.svg')) {
+    url = url.replace(/\.svg$/, '.png');
+  }
+  return url;
+}
+
+export function getRelatedPosts(post: Post, limit = 3): Post[] {
+  const sameCategory = allPosts
+    .filter(p => p.category === post.category && p.id !== post.id)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  
+  if (sameCategory.length >= limit) {
+    return sameCategory.slice(0, limit);
+  }
+
+  const others = allPosts
+    .filter(p => p.category !== post.category && p.id !== post.id)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  return [...sameCategory, ...others].slice(0, limit);
+}
