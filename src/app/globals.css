@@ -1525,7 +1525,7 @@ body::before {
   animation-fill-mode: both;
 }
 
-/* -- Mobile Optimization Pass -- */
+/* - Mobile Optimization Pass - */
 html {
   -webkit-text-size-adjust: 100%;
   scroll-padding-top: 96px;
@@ -2319,7 +2319,7 @@ canvas {
   }
 }
 
-/* -- PostCard Mobile Optimization -- */
+/* - PostCard Mobile Optimization - */
 @media (max-width: 580px) {
   .post-card-body {
     padding: 16px !important;
@@ -2350,7 +2350,7 @@ canvas {
   }
 }
 
-/* -- Premium PostCard Refinements -- */
+/* - Premium PostCard Refinements - */
 @media (max-width: 580px) {
   .post-card {
     border-radius: 20px !important;
@@ -2386,7 +2386,7 @@ canvas {
   }
 }
 
-/* -- Agressive Mobile Overflow Fix -- */
+/* - Agressive Mobile Overflow Fix - */
 @media (max-width: 580px) {
   .latest-posts-section {
     width: 100% !important;
@@ -2437,7 +2437,7 @@ canvas {
   }
 }
 
-/* -- Advanced Responsive Pagination -- */
+/* - Advanced Responsive Pagination - */
 .pagination-controls {
   display: inline-flex !important;
   align-items: center !important;
