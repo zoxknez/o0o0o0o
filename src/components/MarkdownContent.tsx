@@ -4,6 +4,7 @@ import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Download, ExternalLink, Copy, Check } from 'lucide-react';
+import { slugify } from '@/lib/posts';
 
 interface Props {
   content: string;
@@ -20,16 +21,6 @@ function getNodeText(node: unknown): string {
     return getNodeText(reactElem.props?.children);
   }
   return '';
-}
-
-function slugify(text: string): string {
-  return text
-    .toString()
-    .toLowerCase()
-    .trim()
-    .replace(/[^\p{L}\p{N}\s-]/gu, '')
-    .replace(/[\s_-]+/g, '-')
-    .replace(/^-+|-+$/g, '');
 }
 
 function getHostBadge(url: string): string {

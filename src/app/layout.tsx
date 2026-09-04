@@ -4,8 +4,10 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Analytics } from '@vercel/analytics/next';
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://o0o0o0o.vercel.app';
+
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://o0o0o0o.com'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'o0o0o0o - IT Blog',
     template: '%s | o0o0o0o',
@@ -20,6 +22,7 @@ export const metadata: Metadata = {
     siteName: 'o0o0o0o',
     title: 'o0o0o0o - IT Blog',
     description: 'Najsavremeniji IT blog na srpskom. Tutorijali, programi, operativni sistemi i više.',
+    url: SITE_URL,
   },
   twitter: {
     card: 'summary_large_image',

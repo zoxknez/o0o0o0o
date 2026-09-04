@@ -4,6 +4,8 @@ export interface Post {
   id: string;
   slug: string;
   title: string;
+  seoTitle?: string;
+  seoDescription?: string;
   excerpt: string;
   content: string;
   category: string;
@@ -12,6 +14,16 @@ export interface Post {
   readTime: string;
   featured: boolean;
   tags: string[];
+}
+
+export function slugify(text: string): string {
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/[^\p{L}\p{N}\s-]/gu, '')
+    .replace(/[\s_-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 }
 
 export const categories = [

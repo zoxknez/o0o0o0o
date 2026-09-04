@@ -6,6 +6,9 @@ import { Clock, Calendar, ChevronRight, ArrowLeft, Sparkles, BookOpen } from 'lu
 import ReadingProgress from '@/components/ReadingProgress';
 import MarkdownContent from '@/components/MarkdownContent';
 import PostCard from '@/components/PostCard';
+import TableOfContents from '@/components/TableOfContents';
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://o0o0o0o.vercel.app';
 
 type Params = { slug: string };
 
@@ -29,27 +32,32 @@ export async function generateMetadata(
     postImage = pngAlternative;
   }
 
+  const articleUrl = `${SITE_URL}/post/${post.slug}`;
+  const imageUrl = postImage.startsWith('http') ? postImage : `${SITE_URL}${postImage}`;
+  const seoTitle = post.seoTitle || post.title;
+
   return {
+    metadataBase: new URL(SITE_URL),
     title: {
-      absolute: `${post.title} - o0o0o0o`,
+      absolute: `${seoTitle} - o0o0o0o`,
     },
     description: post.excerpt,
     keywords: post.tags,
     authors: [{ name: post.author }],
     creator: post.author,
     alternates: {
-      canonical: `/post/${post.slug}`,
+      canonical: articleUrl,
     },
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
       type: 'article',
-      url: `/post/${post.slug}`,
+      url: articleUrl,
+      title: seoTitle,
+      description: post.excerpt,
       publishedTime: post.date,
       authors: [post.author],
       images: [
         {
-          url: postImage,
+          url: imageUrl,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -58,9 +66,9 @@ export async function generateMetadata(
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
+      title: seoTitle,
       description: post.excerpt,
-      images: [postImage],
+      images: [imageUrl],
     },
   };
 }
@@ -77,8 +85,53 @@ export default async function PostPage(
   const accentColor = cat?.color || 'var(--accent-cyan)';
   const relatedPosts = getRelatedPosts(post, 3);
 
+  const articleUrl = `${SITE_URL}/post/${post.slug}`;
+  const imgMatch = post.content.match(/!\[.*?\]\((.*?)\)/);
+  let postImage = imgMatch ? imgMatch[1] : '/images/ai-chat.jpg';
+  if (postImage.endsWith('.svg')) {
+    postImage = postImage.replace(/\.svg$/, '.png');
+  }
+  const imageUrl = postImage.startsWith('http') ? postImage : `${SITE_URL}${postImage}`;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: post.title,
+    description: post.excerpt,
+    image: [imageUrl],
+    datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      '@type': 'Person',
+      name: post.author,
+      url: SITE_URL,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'o0o0o0o',
+      url: SITE_URL,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/favicon.ico`,
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': articleUrl,
+    },
+    keywords: post.tags.join(', '),
+    articleSection: cat?.name || 'Tutorijali',
+    inLanguage: 'sr-RS',
+  };
+
   return (
     <article className="post-page">
+      {/* ── JSON-LD Structured Data ── */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <ReadingProgress color={accentColor} />
 
       {/* ── Ambient Reading Glow ── */}
@@ -189,6 +242,9 @@ export default async function PostPage(
             </div>
             <p className="post-excerpt-text">{post.excerpt}</p>
           </div>
+
+          {/* Table of Contents */}
+          <TableOfContents content={post.content} accentColor={accentColor} />
 
           <div
             className="post-content reveal animate-in stagger-5"
